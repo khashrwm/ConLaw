@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)file:///C:/Users/wmk20/Downloads/conlaw_sex_discrimination_study_guide.index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Con Law Study Guide — Sex Discrimination Cases</title>
+<link href="./SexDiscrimination.index_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6F0;
+    --ink: #1A1A1A;
+    --rust: #B5451B;
+    --gold: #C49A2A;
+    --sage: #5E7A63;
+    --slate: #4A5568;
+    --light-sage: #E8EDE9;
+    --light-rust: #FDF0EA;
+    --light-gold: #FBF5E6;
+    --border: #D4CFC7;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  .header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 48px 32px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.015) 20px,
+      rgba(255,255,255,0.015) 40px
+    );
+  }
+
+  .header-label {
+    font-family: 'Source Sans 3', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(250,246,240,0.6);
+    font-weight: 300;
+    position: relative;
+  }
+
+  .nav-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .nav-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 18px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    color: var(--slate);
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .nav-btn:hover { color: var(--ink); }
+  .nav-btn.active {
+    color: var(--rust);
+    border-bottom-color: var(--rust);
+    font-weight: 600;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* OVERVIEW TAB */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rust), var(--gold), var(--sage));
+    border-radius: 2px;
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 28px;
+    animation: fadeSlide 0.4s ease both;
+  }
+
+  .tl-item:nth-child(1) { animation-delay: 0.1s; }
+  .tl-item:nth-child(2) { animation-delay: 0.2s; }
+  .tl-item:nth-child(3) { animation-delay: 0.3s; }
+  .tl-item:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--rust);
+    background: var(--cream);
+  }
+
+  .tl-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--rust);
+    margin-bottom: 2px;
+  }
+
+  .tl-case {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .tl-cite {
+    font-size: 12px;
+    color: var(--slate);
+    margin-bottom: 6px;
+  }
+
+  .tl-desc {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .scrutiny-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 32px;
+    box-shadow: var(--card-shadow);
+  }
+
+  .scrutiny-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .scrutiny-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .scrutiny-card {
+    padding: 16px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  .scrutiny-card.rational {
+    background: #f0f0f0;
+    border-left: 3px solid #999;
+  }
+  .scrutiny-card.intermediate {
+    background: var(--light-gold);
+    border-left: 3px solid var(--gold);
+  }
+  .scrutiny-card.strict {
+    background: var(--light-rust);
+    border-left: 3px solid var(--rust);
+  }
+
+  .scrutiny-card h4 {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* CASE TABS */
+  .case-header {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .case-cite {
+    font-size: 13px;
+    color: var(--slate);
+    margin-bottom: 10px;
+  }
+
+  .case-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background: var(--light-sage);
+    color: var(--sage);
+  }
+
+  .section {
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--rust);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--light-rust);
+  }
+
+  .section p, .section li {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .section ul {
+    padding-left: 20px;
+    margin-top: 6px;
+  }
+
+  .section li {
+    margin-bottom: 6px;
+  }
+
+  .key-quote {
+    background: var(--light-gold);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  .key-quote .attr {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    color: var(--slate);
+    margin-top: 6px;
+  }
+
+  .holding-box {
+    background: #fff;
+    border: 1px solid var(--sage);
+    border-radius: 8px;
+    padding: 18px;
+    margin: 14px 0;
+  }
+
+  .holding-box h4 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+
+  .holding-box p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .vote-chip {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--ink);
+    color: var(--cream);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .concurrence-dissent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .concurrence-dissent { grid-template-columns: 1fr; }
+    .scrutiny-levels { grid-template-columns: 1fr; }
+    .header h1 { font-size: 28px; }
+    .case-header h2 { font-size: 24px; }
+  }
+
+  .cd-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 13px;
+  }
+
+  .cd-card h5 {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .cd-card.concur { border-top: 3px solid var(--gold); }
+  .cd-card.dissent { border-top: 3px solid var(--rust); }
+
+  /* EXAM TAB */
+  .exam-q {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--card-shadow);
+  }
+
+  .exam-q h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .exam-q p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.65;
+  }
+
+  .toggle-btn {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rust);
+    background: none;
+    border: 1px solid var(--rust);
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .toggle-btn:hover {
+    background: var(--rust);
+    color: #fff;
+  }
+
+  .answer {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-size: 14px;
+    color: #333;
+    line-height: 1.65;
+  }
+
+  .answer.show { display: block; }
+
+  .print-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--slate);
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Chapter 9 · Equal Protection</div>
+  <h1>Sex Discrimination</h1>
+  <div class="header-sub">Section 3 — Pages 808–827 · Four Key Cases</div>
+</div>
+
+<div class="nav-bar">
+  <button class="nav-btn active" onclick="showTab(&#39;overview&#39;)">Overview</button>
+  <button class="nav-btn" onclick="showTab(&#39;frontiero&#39;)">Frontiero</button>
+  <button class="nav-btn" onclick="showTab(&#39;craig&#39;)">Craig v. Boren</button>
+  <button class="nav-btn" onclick="showTab(&#39;hogan&#39;)">Hogan</button>
+  <button class="nav-btn" onclick="showTab(&#39;vmi&#39;)">US v. Virginia</button>
+  <button class="nav-btn" onclick="showTab(&#39;exam&#39;)">Exam Prep</button>
+</div>
+
+<div class="container">
+
+  <!-- ==================== OVERVIEW ==================== -->
+  <div class="panel active" id="overview">
+    <h3 style="font-family:&#39;Cormorant Garamond&#39;,serif; font-size:22px; font-weight:700; margin-bottom:18px;">The Arc of Sex Discrimination Doctrine</h3>
+    <p style="font-size:14px; color:#444; margin-bottom:24px;">
+      The Court's approach to sex-based classifications evolved from total deference through a failed push for strict scrutiny, finally settling on intermediate scrutiny — though the precise stringency of that standard remains debated.
+    </p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">1973</div>
+        <div class="tl-case">Frontiero v. Richardson</div>
+        <div class="tl-cite">411 U.S. 677</div>
+        <div class="tl-desc">Brennan's plurality tried to make sex a suspect classification warranting strict scrutiny — but fell one vote short of a majority.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color: var(--gold);"></div>
+        <div class="tl-year">1976</div>
+        <div class="tl-case">Craig v. Boren</div>
+        <div class="tl-cite">429 U.S. 190</div>
+        <div class="tl-desc">The Court formally adopted intermediate scrutiny: gender classifications must serve "important governmental objectives" and be "substantially related" to achieving them.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color: var(--sage);"></div>
+        <div class="tl-year">1982</div>
+        <div class="tl-case">Mississippi University for Women v. Hogan</div>
+        <div class="tl-cite">458 U.S. 718</div>
+        <div class="tl-desc">O'Connor's majority added the "exceedingly persuasive justification" language, rejecting the state's compensatory purpose for an all-female nursing school.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color: var(--ink);"></div>
+        <div class="tl-year">1996</div>
+        <div class="tl-case">United States v. Virginia</div>
+        <div class="tl-cite">518 U.S. 515</div>
+        <div class="tl-desc">Ginsburg's majority applied "exceedingly persuasive justification" to strike down VMI's male-only admissions; Scalia accused the majority of covertly adopting strict scrutiny.</div>
+      </div>
+    </div>
+
+    <div class="scrutiny-box">
+      <h3>Levels of Scrutiny Compared</h3>
+      <div class="scrutiny-levels">
+        <div class="scrutiny-card rational">
+          <h4>Rational Basis</h4>
+          <p>Classification must be rationally related to a legitimate government interest. (Pre-<em>Reed</em> standard for sex.)</p>
+        </div>
+        <div class="scrutiny-card intermediate">
+          <h4>Intermediate Scrutiny</h4>
+          <p>Classification must serve <strong>important</strong> governmental objectives and be <strong>substantially related</strong> to achieving those objectives. (<em>Craig</em> standard.)</p>
+        </div>
+        <div class="scrutiny-card strict">
+          <h4>Strict Scrutiny</h4>
+          <p>Classification must serve a <strong>compelling</strong> interest and be <strong>narrowly tailored</strong>. (What Brennan sought in <em>Frontiero</em>; used for race.)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FRONTIERO ==================== -->
+  <div class="panel" id="frontiero">
+    <div class="case-header">
+      <h2>Frontiero v. Richardson</h2>
+      <div class="case-cite">411 U.S. 677 (1973)</div>
+      <span class="case-tag">Plurality — strict scrutiny attempt</span>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Facts</div>
+      <p>A federal law gave male members of the armed forces an automatic dependency allowance for their wives but required female servicemembers to prove their husbands were actually dependent. Sharron Frontiero, an Air Force lieutenant, challenged this differential treatment.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Issue</div>
+      <p>Whether sex-based classifications in federal military benefits law should be treated as "suspect" and subjected to strict judicial scrutiny under the Equal Protection principles of the Fifth Amendment's Due Process Clause.</p>
+    </div>
+
+    <div class="holding-box">
+      <h4>Holding <span class="vote-chip">8–1</span></h4>
+      <p>The law was unconstitutional. But only a <strong>plurality</strong> (Brennan, joined by Douglas, White, and Marshall) would have declared sex a suspect classification. The plurality fell one vote short of a majority for strict scrutiny.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Brennan's Plurality Reasoning</div>
+      <ul>
+        <li><strong>History of discrimination:</strong> Sex discrimination has a long history analogous to race discrimination. Women were historically denied the ability to hold property, serve on juries, or vote — comparable to the legal position of enslaved people.</li>
+        <li><strong>Immutability:</strong> Sex, like race and national origin, is an immutable characteristic, and imposing legal burdens based on sex violates the principle that burdens should relate to individual responsibility.</li>
+        <li><strong>No relation to ability:</strong> The sex characteristic frequently has no relation to ability to perform or contribute to society, making gender-based distinctions often invidious.</li>
+        <li><strong>Administrative convenience rejected:</strong> The government argued it would be cheaper and easier to simply presume wives were dependent. Brennan found no concrete evidence the differential treatment saved money, and any scheme drawn solely for administrative convenience violates equal protection.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Why Only a Plurality?</div>
+      <div class="concurrence-dissent">
+        <div class="cd-card concur">
+          <h5>Powell Concurrence (+ Burger, Blackmun)</h5>
+          <p>Agreed the law was unconstitutional but said it was <strong>unnecessary to declare sex suspect</strong> — the case could be decided under Reed's rationale. Also noted the Equal Rights Amendment was pending, and the Court should defer to the democratic process rather than preempt it.</p>
+        </div>
+        <div class="cd-card concur">
+          <h5>Stewart Concurrence</h5>
+          <p>Concurred in the judgment only, calling the law an invidious discrimination violating the Constitution under the existing Reed framework.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Significance</div>
+      <p>Brennan never secured a fifth vote for strict scrutiny. The ERA ultimately failed to be ratified, and sex equality claims were thereafter litigated under <strong>intermediate scrutiny</strong> as later articulated in <em>Craig</em> and <em>Virginia</em>. The case raised the key question the casebook asks: Should Brennan have analogized women to discrete and insular minorities under <em>Carolene Products</em> footnote four?</p>
+    </div>
+  </div>
+
+  <!-- ==================== CRAIG ==================== -->
+  <div class="panel" id="craig">
+    <div class="case-header">
+      <h2>Craig v. Boren</h2>
+      <div class="case-cite">429 U.S. 190, 97 S. Ct. 451 (1976)</div>
+      <span class="case-tag">Intermediate scrutiny announced</span>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Facts</div>
+      <p>An Oklahoma statute prohibited the sale of "non-intoxicating" 3.2% beer to males under 21 but allowed sales to females at age 18. Craig, a male between 18 and 20, challenged the gender-based age differential as an equal protection violation.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Issue</div>
+      <p>Whether a gender-based differential in the legal drinking age constitutes a denial of equal protection for males aged 18–20.</p>
+    </div>
+
+    <div class="holding-box">
+      <h4>Holding <span class="vote-chip">7–2</span></h4>
+      <p>The gender-based differential violated equal protection. The Court formally announced <strong>intermediate scrutiny</strong>: classifications by gender must serve <strong>important governmental objectives</strong> and must be <strong>substantially related</strong> to achievement of those objectives.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Brennan's Majority Analysis</div>
+      <ul>
+        <li><strong>New standard articulated:</strong> Previous cases (Reed, Frontiero) had rejected administrative ease and convenience as sufficient justifications for gender classifications. The standard now requires an "important" objective and a "substantial" relationship between the classification and the objective.</li>
+        <li><strong>Objective accepted arguendo:</strong> The Court accepted Oklahoma's asserted goal of enhancing traffic safety for purposes of discussion.</li>
+        <li><strong>Statistics insufficient:</strong> Oklahoma's evidence showed that 0.18% of females and 2% of males aged 18–20 were arrested for alcohol-related driving offenses. Brennan found this disparity statistically insubstantial — a 2% correlation between maleness and drunk driving was too tenuous to serve as a proxy.</li>
+        <li><strong>Overbreadth:</strong> The statute only prohibited the <em>sale</em> of 3.2% beer to young males, not their actual drinking, making the relationship to traffic safety even more attenuated.</li>
+        <li><strong>Prior cases had rejected better evidence:</strong> Earlier decisions had struck down gender-based laws even when they rested on far stronger empirical relationships than this one.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Concurrences &amp; Dissents</div>
+      <div class="concurrence-dissent">
+        <div class="cd-card concur">
+          <h5>Powell (Concurring)</h5>
+          <p>Viewed it as a relatively easy case under Reed. Agreed the classification lacked a fair and substantial relation to the objective. Did not fully endorse the new "intermediate" label.</p>
+        </div>
+        <div class="cd-card concur">
+          <h5>Stevens (Concurring)</h5>
+          <p>Skeptical of rigid tiers of scrutiny entirely. Argued the two-tiered framework is not a completely logical method — courts actually apply a single standard reasonably and consistently. The classification here was objectionable because it was based on an outdated tradition of discrimination.</p>
+        </div>
+        <div class="cd-card dissent">
+          <h5>Rehnquist (Dissenting)</h5>
+          <p>Two main objections: (1) men challenging a gender-based statute should not be able to invoke the same heightened standard as women, because the standard exists to protect historically disadvantaged groups; (2) the statistics adequately supported the rationality of the classification.</p>
+        </div>
+        <div class="cd-card dissent">
+          <h5>Burger (Dissenting)</h5>
+          <p>Agreed in general with Rehnquist.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Key Exam Points</div>
+      <ul>
+        <li>This is <strong>the</strong> case that formally establishes the intermediate scrutiny test for sex classifications.</li>
+        <li>Note it protects <em>both</em> sexes — here the plaintiff was male.</li>
+        <li>The casebook raises whether Reed alone should have disposed of this case, and whether the statistical evidence was really that weak.</li>
+        <li>Rehnquist's dissent raises an important question about how to define "important" objectives and whether the phrases used are too elastic.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== HOGAN ==================== -->
+  <div class="panel" id="hogan">
+    <div class="case-header">
+      <h2>Mississippi University for Women v. Hogan</h2>
+      <div class="case-cite">458 U.S. 718 (1982)</div>
+      <span class="case-tag">"Exceedingly persuasive justification"</span>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Facts</div>
+      <p>Joe Hogan, a male registered nurse in Columbus, Mississippi, was denied admission to the Mississippi University for Women (MUW) School of Nursing's baccalaureate program. MUW, founded in 1884, was the oldest state-supported all-female university in the nation. Hogan was told he could only audit classes, not earn credits toward a degree.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Issue</div>
+      <p>Whether a state policy excluding men from enrolling in a state-supported all-female nursing school violates the Equal Protection Clause.</p>
+    </div>
+
+    <div class="holding-box">
+      <h4>Holding <span class="vote-chip">5–4</span></h4>
+      <p>Yes. The exclusion of men from the nursing program was unconstitutional. The state failed to show an "exceedingly persuasive justification" for the gender-based classification. Justice O'Connor, the first woman on the Court, wrote the majority opinion.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">O'Connor's Framework</div>
+      <ul>
+        <li><strong>Burden on the state:</strong> Defenders of a gender-classifying law must carry the burden of showing an "exceedingly persuasive justification" for the classification.</li>
+        <li><strong>No reliance on stereotypes:</strong> The test must be applied free of fixed notions about the roles and abilities of males and females. The state cannot justify classification based on outdated assumptions.</li>
+        <li><strong>Compensatory purpose rejected:</strong> Mississippi claimed the women-only policy compensated for past discrimination against women. But O'Connor found this failed on the facts — nursing is a field historically <em>dominated</em> by women. A women-only nursing school doesn't compensate for barriers; it perpetuates the stereotype that nursing is exclusively a woman's job.</li>
+        <li><strong>Searching analysis required:</strong> A "benign" justification requires a showing that members of the burdened sex actually suffer a disadvantage related to the classification. The state made no such showing here.</li>
+        <li><strong>Second prong also failed:</strong> MUW allowed men to audit classes, which fatally undercut the claim that excluding men was substantially related to any educational objective. If men in the classroom don't harm the educational experience for auditing purposes, they don't harm it for degree purposes either.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Concurrences &amp; Dissents</div>
+      <div class="concurrence-dissent">
+        <div class="cd-card dissent">
+          <h5>Powell (Dissenting, joined by Rehnquist)</h5>
+          <p>Objected to applying heightened scrutiny when the state was trying to <em>expand</em> women's choices. Distinguished from racial segregation: MUW was one option among many coeducational schools, not a sole-alternative. Single-sex education is a respected pedagogical choice that students voluntarily select.</p>
+        </div>
+        <div class="cd-card dissent">
+          <h5>Burger &amp; Blackmun</h5>
+          <p>Filed separate dissenting notations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Significance</div>
+      <ul>
+        <li>First sex discrimination case decided after O'Connor joined the Court (first woman justice).</li>
+        <li>Introduced the "exceedingly persuasive justification" language that became central in <em>Virginia</em>.</li>
+        <li>Showed that the intermediate scrutiny test applies to classifications that disadvantage <em>either</em> sex.</li>
+        <li>Casebook footnote distinguishes sexual segregation in education from racial segregation: racial segregated facilities were the <em>sole</em> alternative, while MUW was one of many options.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== VMI ==================== -->
+  <div class="panel" id="vmi">
+    <div class="case-header">
+      <h2>United States v. Virginia</h2>
+      <div class="case-cite">518 U.S. 515, 116 S. Ct. 2264 (1996)</div>
+      <span class="case-tag">VMI Case — Exceedingly persuasive standard applied</span>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Facts</div>
+      <p>Virginia Military Institute (VMI) was the sole single-sex public institution of higher learning among Virginia's 15 public colleges. VMI's mission was to produce "citizen-soldiers" through an "adversative method" featuring physical rigor, mental stress, absence of privacy, minute regulation, and indoctrination in desirable values. When challenged, Virginia proposed creating a parallel women's program (VWIL) at nearby Mary Baldwin College, a private liberal arts school.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Issue</div>
+      <p>Whether Virginia's exclusion of women from VMI's unique educational opportunities, and the proposed VWIL alternative, satisfy equal protection requirements.</p>
+    </div>
+
+    <div class="holding-box">
+      <h4>Holding <span class="vote-chip">7–1</span></h4>
+      <p>Virginia violated equal protection. Neither VMI's male-only admission policy nor the proposed VWIL remedy was constitutionally adequate. Justice Ginsburg wrote the majority opinion. (Thomas recused; Scalia dissented alone.)</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Ginsburg's Majority Opinion — Key Points</div>
+      <ul>
+        <li><strong>Standard restated:</strong> Parties defending gender-based government action must demonstrate an "exceedingly persuasive justification." The burden is demanding and rests entirely on the State. The justification must be genuine, not hypothesized post hoc, and must not rely on overbroad generalizations about the sexes.</li>
+        <li><strong>"Inherent differences" acknowledged but limited:</strong> Physical differences between men and women are enduring, but they may not be used to create or perpetuate the legal, social, and economic inferiority of women. Sex classifications may not be used for denigration or to place artificial constraints on opportunity.</li>
+        <li><strong>Virginia's diversity justification rejected:</strong> The record — including a 1980s study committee — showed VMI's real reason for excluding women was not to promote educational diversity but to maintain an all-male tradition. The state's interest in providing diverse educational options rang hollow when the only single-sex option benefited men.</li>
+        <li><strong>Adversative method not inherently unsuitable:</strong> Some women can meet VMI's physical standards, thrive in its adversative environment, and want to attend. Generalizations about what "most women" prefer cannot justify denying the opportunity to those individual women who have the will and capacity.</li>
+        <li><strong>VWIL remedy inadequate:</strong> VWIL was a "pale shadow" of VMI — different in curriculum, faculty stature, funding, prestige, alumni network, and methodology. Comparing VWIL to VMI was reminiscent of the inequality found in <em>Sweatt v. Painter</em> (the separate Black law school case). The tangible and intangible qualities that make VMI distinctive could not be replicated.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Concurrences &amp; Dissents</div>
+      <div class="concurrence-dissent">
+        <div class="cd-card concur">
+          <h5>Rehnquist (Concurring in judgment)</h5>
+          <p>Agreed the exclusion was unconstitutional but for narrower reasons. Argued VMI could have survived if Virginia had created a truly equal women's institution. Worried the majority's "exceedingly persuasive" language went beyond traditional intermediate scrutiny. Suggested the real violation was maintaining an all-men's school without providing a comparable institution for women.</p>
+        </div>
+        <div class="cd-card dissent">
+          <h5>Scalia (Dissenting)</h5>
+          <p>Accused the majority of effectively adopting strict scrutiny while claiming to apply intermediate scrutiny. Argued the "exceedingly persuasive justification" phrase contradicts the established intermediate scrutiny framework. Defended VMI's tradition and warned the decision threatened all single-sex public education — and potentially private institutions receiving government support. Called the Court's decision a product of current fashions rather than constitutional principle.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">The Big Debate: What Level of Scrutiny?</div>
+      <p>The casebook highlights the central controversy: Did <em>Virginia</em> covertly raise the standard for sex classifications closer to strict scrutiny? Scalia accused Ginsburg of doing exactly that. Rehnquist's concurrence shared some of this concern. The "exceedingly persuasive justification" language is arguably more demanding than the "important objective / substantially related" formulation from <em>Craig</em>. The casebook also notes the Court purported to reserve the question of whether strict scrutiny should apply but may have functionally moved in that direction.</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXAM PREP ==================== -->
+  <div class="panel" id="exam">
+    <h3 style="font-family:&#39;Cormorant Garamond&#39;,serif; font-size:22px; font-weight:700; margin-bottom:18px;">Exam Prep Questions</h3>
+
+    <div class="exam-q">
+      <h4>1. Why did Brennan fail to secure strict scrutiny for sex in Frontiero?</h4>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <p>Powell (joined by Burger and Blackmun) concurred in the result but refused to declare sex a suspect classification for two reasons: (1) the case could be resolved under the existing Reed rationality framework, making it unnecessary to reach the broader question; and (2) the Equal Rights Amendment was pending ratification, so the Court should defer to the democratic process rather than constitutionally preempt it through judicial action. Stewart also concurred only in the judgment. Thus Brennan had only four votes (himself, Douglas, White, Marshall) for strict scrutiny — one short of a majority.</p>
+      </div>
+    </div>
+
+    <div class="exam-q">
+      <h4>2. What is the intermediate scrutiny test from Craig, and how does it differ from rational basis and strict scrutiny?</h4>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <p><strong>Intermediate scrutiny (Craig):</strong> The classification must serve <em>important</em> governmental objectives and be <em>substantially related</em> to achieving those objectives. This is more demanding than rational basis (which requires only a <em>legitimate</em> interest and a <em>rational</em> relationship) but less demanding than strict scrutiny (which requires a <em>compelling</em> interest and <em>narrow tailoring</em>). The key differences are in the weight of the government interest required and the tightness of the fit between the classification and the objective.</p>
+      </div>
+    </div>
+
+    <div class="exam-q">
+      <h4>3. Why was the "compensatory purpose" defense rejected in Hogan?</h4>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <p>Mississippi argued the women-only nursing school compensated for past discrimination against women. O'Connor rejected this because nursing has historically been <em>dominated</em> by women — there was no past discrimination against women in nursing that needed compensating. Instead, the all-female policy perpetuated the stereotype that nursing is exclusively women's work. O'Connor established that a compensatory justification requires a searching analysis showing that the burdened sex actually suffers a disadvantage related to the classification — not just an assertion of benign purpose.</p>
+      </div>
+    </div>
+
+    <div class="exam-q">
+      <h4>4. Did United States v. Virginia effectively adopt strict scrutiny? What's the argument on each side?</h4>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <p><strong>Yes (Scalia's view):</strong> The "exceedingly persuasive justification" standard is functionally equivalent to strict scrutiny. The majority required the state to demonstrate a genuine (not post hoc) justification, rejected generalizations about sex differences, demanded the classification not be based on overbroad assumptions, and required an extremely close fit. This goes well beyond the "important objective / substantially related" test from Craig.</p>
+        <p style="margin-top:8px;"><strong>No (Ginsburg's framing):</strong> The majority explicitly said it was not equating sex with race for equal protection purposes. It acknowledged "inherent differences" between the sexes remain cause for celebration, not denigration — language that would be inappropriate under strict scrutiny for race. The "exceedingly persuasive justification" language originated in Hogan, not Virginia, and simply restates the Craig standard with emphasis. The Court explicitly reserved the question of whether to elevate to strict scrutiny.</p>
+        <p style="margin-top:8px;"><strong>For the exam:</strong> The best answer acknowledges this is genuinely ambiguous. The doctrinal label remains "intermediate scrutiny," but the application in Virginia was notably more rigorous than in Craig — suggesting the standard may be "intermediate scrutiny with bite."</p>
+      </div>
+    </div>
+
+    <div class="exam-q">
+      <h4>5. How does the VWIL remedy fail under the Sweatt v. Painter analogy?</h4>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <p>In <em>Sweatt</em>, Texas created a separate law school for Black students rather than admitting them to UT Law. The Court found the separate school could not match UT's intangible qualities — reputation, faculty prestige, alumni influence, tradition. Ginsburg drew the same comparison for VWIL: it lacked VMI's adversative method, its prestigious alumni network, its 157-year history, its faculty stature, and its funding levels. The intangible qualities that make an institution great — prestige, standing in the community, tradition — cannot be replicated overnight in a parallel program. Both cases stand for the principle that separate is inherently unequal when it comes to premier educational opportunities.</p>
+      </div>
+    </div>
+
+    <div class="exam-q">
+      <h4>6. Trace the doctrinal evolution: How does each case build on the prior one?</h4>
+      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
+      <div class="answer">
+        <p><strong>Reed (1971):</strong> First time the Court struck down a sex-based classification, though nominally under rational basis review — but clearly applying more bite than usual.</p>
+        <p style="margin-top:6px;"><strong>Frontiero (1973):</strong> Brennan's plurality tried to leap to strict scrutiny, analogizing sex to race. Failed to get five votes because of the pending ERA and prudential concerns.</p>
+        <p style="margin-top:6px;"><strong>Craig (1976):</strong> Settled on a middle path — intermediate scrutiny — as the consensus position. Important objectives + substantially related means.</p>
+        <p style="margin-top:6px;"><strong>Hogan (1982):</strong> Applied Craig but added the "exceedingly persuasive justification" language, and showed the test applies even when the classification purportedly benefits women (compensatory purpose scrutinized).</p>
+        <p style="margin-top:6px;"><strong>Virginia (1996):</strong> Ginsburg made "exceedingly persuasive justification" central, applied it rigorously, demanded genuine rather than post hoc justifications, rejected reliance on generalizations, and required the remedy (VWIL) to be truly comparable. Whether this is "Craig plus" or "almost strict scrutiny" remains the open question.</p>
+      </div>
+    </div>
+
+    <div class="print-note">
+      Study guide for Chapter 9, Section 3 — Sex Discrimination (pp. 808–827)
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleAnswer(btn) {
+  const answer = btn.nextElementSibling;
+  answer.classList.toggle('show');
+  btn.textContent = answer.classList.contains('show') ? 'Hide Answer' : 'Show Answer';
+}
+</script>
+
+
+</body></html>
