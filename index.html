@@ -1,848 +1,764 @@
 <!DOCTYPE html>
-<!-- saved from url=(0081)file:///C:/Users/wmk20/Downloads/conlaw_sex_discrimination_study_guide.index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Con Law Study Guide — Sex Discrimination Cases</title>
-<link href="./SexDiscrimination.index_files/css2" rel="stylesheet">
+<title>Criminal Law — Master Crime List</title>
 <style>
-  :root {
-    --cream: #FAF6F0;
-    --ink: #1A1A1A;
-    --rust: #B5451B;
-    --gold: #C49A2A;
-    --sage: #5E7A63;
-    --slate: #4A5568;
-    --light-sage: #E8EDE9;
-    --light-rust: #FDF0EA;
-    --light-gold: #FBF5E6;
-    --border: #D4CFC7;
-    --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    line-height: 1.65;
-    font-size: 15px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    min-height: 100vh;
+    color: #e2e8f0;
   }
 
   .header {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 48px 32px 40px;
+    background: linear-gradient(180deg, rgba(220,38,38,0.12) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(220,38,38,0.25);
+    padding: 36px 24px 28px;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 20px,
-      rgba(255,255,255,0.015) 20px,
-      rgba(255,255,255,0.015) 40px
-    );
-  }
-
-  .header-label {
-    font-family: 'Source Sans 3', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--gold);
-    margin-bottom: 12px;
-    position: relative;
-  }
-
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1.2;
-    position: relative;
-    margin-bottom: 8px;
   }
 
   .header-sub {
-    font-size: 14px;
-    color: rgba(250,246,240,0.6);
-    font-weight: 300;
-    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 8px;
   }
 
-  .nav-bar {
-    background: #fff;
-    border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  }
-
-  .nav-btn {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 14px 18px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    color: var(--slate);
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-
-  .nav-btn:hover { color: var(--ink); }
-  .nav-btn.active {
-    color: var(--rust);
-    border-bottom-color: var(--rust);
-    font-weight: 600;
-  }
-
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 32px 24px 64px;
-  }
-
-  .panel { display: none; }
-  .panel.active { display: block; }
-
-  /* OVERVIEW TAB */
-  .timeline {
-    position: relative;
-    padding-left: 32px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: 12px;
-    bottom: 12px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--rust), var(--gold), var(--sage));
-    border-radius: 2px;
-  }
-
-  .tl-item {
-    position: relative;
-    margin-bottom: 28px;
-    animation: fadeSlide 0.4s ease both;
-  }
-
-  .tl-item:nth-child(1) { animation-delay: 0.1s; }
-  .tl-item:nth-child(2) { animation-delay: 0.2s; }
-  .tl-item:nth-child(3) { animation-delay: 0.3s; }
-  .tl-item:nth-child(4) { animation-delay: 0.4s; }
-
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateX(12px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  .tl-dot {
-    position: absolute;
-    left: -28px;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--rust);
-    background: var(--cream);
-  }
-
-  .tl-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px;
     font-weight: 700;
-    color: var(--rust);
+    color: #f8fafc;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .header-count {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 22px;
+  }
+
+  .search-wrap {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 14px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-wrap input:focus {
+    border-color: #475569;
+  }
+
+  .search-wrap input::placeholder {
+    color: #475569;
+  }
+
+  .content {
+    padding: 20px 16px 50px;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .category {
+    margin-bottom: 10px;
+  }
+
+  .cat-btn {
+    width: 100%;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #f1f5f9;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    transition: background 0.2s;
+  }
+
+  .cat-btn:hover {
+    background: rgba(51, 65, 85, 0.5);
+  }
+
+  .cat-btn.open {
+    background: rgba(51, 65, 85, 0.6);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .cat-btn .count {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 400;
+  }
+
+  .cat-btn .toggle {
+    font-size: 18px;
+    color: #64748b;
+  }
+
+  .cat-body {
+    border: 1px solid #334155;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    display: none;
+  }
+
+  .cat-body.open {
+    display: block;
+  }
+
+  .crime {
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  }
+
+  .crime:last-child {
+    border-bottom: none;
+  }
+
+  .crime-btn {
+    width: 100%;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.4);
+    border: none;
+    cursor: pointer;
+    color: #e2e8f0;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    transition: background 0.15s;
+  }
+
+  .crime-btn:hover {
+    background: rgba(30, 41, 59, 0.6);
+  }
+
+  .crime-btn.open {
+    background: rgba(30, 41, 59, 0.8);
+  }
+
+  .crime-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .crime-arrow {
+    font-size: 14px;
+    color: #475569;
+    transition: transform 0.15s;
+    margin-left: auto;
+  }
+
+  .crime-btn.open .crime-arrow {
+    transform: rotate(90deg);
+  }
+
+  .crime-detail {
+    padding: 4px 16px 18px 36px;
+    background: rgba(15, 23, 42, 0.6);
+    display: none;
+  }
+
+  .crime-detail.open {
+    display: block;
+  }
+
+  .detail-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+
+  .crime-detail ol {
+    margin: 0 0 14px 0;
+    padding-left: 18px;
+    line-height: 1.75;
+  }
+
+  .crime-detail ol li {
+    font-size: 13.5px;
+    color: #cbd5e1;
     margin-bottom: 2px;
   }
 
-  .tl-case {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .tl-cite {
-    font-size: 12px;
-    color: var(--slate);
-    margin-bottom: 6px;
-  }
-
-  .tl-desc {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.6;
-  }
-
-  .scrutiny-box {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
-    margin-top: 32px;
-    box-shadow: var(--card-shadow);
-  }
-
-  .scrutiny-box h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: var(--ink);
-  }
-
-  .scrutiny-levels {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-  }
-
-  .scrutiny-card {
-    padding: 16px;
+  .crime-notes {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.65;
+    padding: 10px 12px;
+    background: rgba(30, 41, 59, 0.5);
     border-radius: 6px;
-    font-size: 13px;
   }
 
-  .scrutiny-card.rational {
-    background: #f0f0f0;
-    border-left: 3px solid #999;
-  }
-  .scrutiny-card.intermediate {
-    background: var(--light-gold);
-    border-left: 3px solid var(--gold);
-  }
-  .scrutiny-card.strict {
-    background: var(--light-rust);
-    border-left: 3px solid var(--rust);
-  }
-
-  .scrutiny-card h4 {
-    font-weight: 700;
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  /* CASE TABS */
-  .case-header {
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .case-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 4px;
-  }
-
-  .case-cite {
-    font-size: 13px;
-    color: var(--slate);
-    margin-bottom: 10px;
-  }
-
-  .case-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 4px 10px;
-    border-radius: 3px;
-    background: var(--light-sage);
-    color: var(--sage);
-  }
-
-  .section {
-    margin-bottom: 24px;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--rust);
-    margin-bottom: 8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--light-rust);
-  }
-
-  .section p, .section li {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.7;
-  }
-
-  .section ul {
-    padding-left: 20px;
-    margin-top: 6px;
-  }
-
-  .section li {
-    margin-bottom: 6px;
-  }
-
-  .key-quote {
-    background: var(--light-gold);
-    border-left: 3px solid var(--gold);
-    padding: 14px 18px;
-    margin: 12px 0;
-    border-radius: 0 6px 6px 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    font-style: italic;
-    color: #444;
-    line-height: 1.55;
-  }
-
-  .key-quote .attr {
-    display: block;
-    font-family: 'Source Sans 3', sans-serif;
-    font-style: normal;
-    font-size: 12px;
-    color: var(--slate);
-    margin-top: 6px;
-  }
-
-  .holding-box {
-    background: #fff;
-    border: 1px solid var(--sage);
-    border-radius: 8px;
-    padding: 18px;
-    margin: 14px 0;
-  }
-
-  .holding-box h4 {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--sage);
-    margin-bottom: 6px;
-  }
-
-  .holding-box p {
-    font-size: 14px;
-    line-height: 1.65;
-  }
-
-  .vote-chip {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 3px;
-    background: var(--ink);
-    color: var(--cream);
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-
-  .concurrence-dissent {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 12px;
-  }
-
-  @media (max-width: 600px) {
-    .concurrence-dissent { grid-template-columns: 1fr; }
-    .scrutiny-levels { grid-template-columns: 1fr; }
-    .header h1 { font-size: 28px; }
-    .case-header h2 { font-size: 24px; }
-  }
-
-  .cd-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 14px;
-    font-size: 13px;
-  }
-
-  .cd-card h5 {
-    font-weight: 700;
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-
-  .cd-card.concur { border-top: 3px solid var(--gold); }
-  .cd-card.dissent { border-top: 3px solid var(--rust); }
-
-  /* EXAM TAB */
-  .exam-q {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 18px;
-    box-shadow: var(--card-shadow);
-  }
-
-  .exam-q h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--ink);
-  }
-
-  .exam-q p {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.65;
-  }
-
-  .toggle-btn {
-    margin-top: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--rust);
-    background: none;
-    border: 1px solid var(--rust);
-    padding: 6px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .toggle-btn:hover {
-    background: var(--rust);
-    color: #fff;
-  }
-
-  .answer {
-    display: none;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px dashed var(--border);
-    font-size: 14px;
-    color: #333;
-    line-height: 1.65;
-  }
-
-  .answer.show { display: block; }
-
-  .print-note {
+  .no-results {
     text-align: center;
-    font-size: 12px;
-    color: var(--slate);
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    padding: 40px;
+    color: #475569;
+    font-size: 14px;
   }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-label">Chapter 9 · Equal Protection</div>
-  <h1>Sex Discrimination</h1>
-  <div class="header-sub">Section 3 — Pages 808–827 · Four Key Cases</div>
+  <div class="header-sub">Criminal Law Final Review</div>
+  <h1>Master Crime List</h1>
+  <div class="header-count"><span id="totalCount"></span> crimes &amp; defenses · Elements for memorization</div>
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="Search crimes, elements, or notes..." autocomplete="off">
+  </div>
 </div>
 
-<div class="nav-bar">
-  <button class="nav-btn active" onclick="showTab(&#39;overview&#39;)">Overview</button>
-  <button class="nav-btn" onclick="showTab(&#39;frontiero&#39;)">Frontiero</button>
-  <button class="nav-btn" onclick="showTab(&#39;craig&#39;)">Craig v. Boren</button>
-  <button class="nav-btn" onclick="showTab(&#39;hogan&#39;)">Hogan</button>
-  <button class="nav-btn" onclick="showTab(&#39;vmi&#39;)">US v. Virginia</button>
-  <button class="nav-btn" onclick="showTab(&#39;exam&#39;)">Exam Prep</button>
-</div>
-
-<div class="container">
-
-  <!-- ==================== OVERVIEW ==================== -->
-  <div class="panel active" id="overview">
-    <h3 style="font-family:&#39;Cormorant Garamond&#39;,serif; font-size:22px; font-weight:700; margin-bottom:18px;">The Arc of Sex Discrimination Doctrine</h3>
-    <p style="font-size:14px; color:#444; margin-bottom:24px;">
-      The Court's approach to sex-based classifications evolved from total deference through a failed push for strict scrutiny, finally settling on intermediate scrutiny — though the precise stringency of that standard remains debated.
-    </p>
-
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-year">1973</div>
-        <div class="tl-case">Frontiero v. Richardson</div>
-        <div class="tl-cite">411 U.S. 677</div>
-        <div class="tl-desc">Brennan's plurality tried to make sex a suspect classification warranting strict scrutiny — but fell one vote short of a majority.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="border-color: var(--gold);"></div>
-        <div class="tl-year">1976</div>
-        <div class="tl-case">Craig v. Boren</div>
-        <div class="tl-cite">429 U.S. 190</div>
-        <div class="tl-desc">The Court formally adopted intermediate scrutiny: gender classifications must serve "important governmental objectives" and be "substantially related" to achieving them.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="border-color: var(--sage);"></div>
-        <div class="tl-year">1982</div>
-        <div class="tl-case">Mississippi University for Women v. Hogan</div>
-        <div class="tl-cite">458 U.S. 718</div>
-        <div class="tl-desc">O'Connor's majority added the "exceedingly persuasive justification" language, rejecting the state's compensatory purpose for an all-female nursing school.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="border-color: var(--ink);"></div>
-        <div class="tl-year">1996</div>
-        <div class="tl-case">United States v. Virginia</div>
-        <div class="tl-cite">518 U.S. 515</div>
-        <div class="tl-desc">Ginsburg's majority applied "exceedingly persuasive justification" to strike down VMI's male-only admissions; Scalia accused the majority of covertly adopting strict scrutiny.</div>
-      </div>
-    </div>
-
-    <div class="scrutiny-box">
-      <h3>Levels of Scrutiny Compared</h3>
-      <div class="scrutiny-levels">
-        <div class="scrutiny-card rational">
-          <h4>Rational Basis</h4>
-          <p>Classification must be rationally related to a legitimate government interest. (Pre-<em>Reed</em> standard for sex.)</p>
-        </div>
-        <div class="scrutiny-card intermediate">
-          <h4>Intermediate Scrutiny</h4>
-          <p>Classification must serve <strong>important</strong> governmental objectives and be <strong>substantially related</strong> to achieving those objectives. (<em>Craig</em> standard.)</p>
-        </div>
-        <div class="scrutiny-card strict">
-          <h4>Strict Scrutiny</h4>
-          <p>Classification must serve a <strong>compelling</strong> interest and be <strong>narrowly tailored</strong>. (What Brennan sought in <em>Frontiero</em>; used for race.)</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== FRONTIERO ==================== -->
-  <div class="panel" id="frontiero">
-    <div class="case-header">
-      <h2>Frontiero v. Richardson</h2>
-      <div class="case-cite">411 U.S. 677 (1973)</div>
-      <span class="case-tag">Plurality — strict scrutiny attempt</span>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Facts</div>
-      <p>A federal law gave male members of the armed forces an automatic dependency allowance for their wives but required female servicemembers to prove their husbands were actually dependent. Sharron Frontiero, an Air Force lieutenant, challenged this differential treatment.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Issue</div>
-      <p>Whether sex-based classifications in federal military benefits law should be treated as "suspect" and subjected to strict judicial scrutiny under the Equal Protection principles of the Fifth Amendment's Due Process Clause.</p>
-    </div>
-
-    <div class="holding-box">
-      <h4>Holding <span class="vote-chip">8–1</span></h4>
-      <p>The law was unconstitutional. But only a <strong>plurality</strong> (Brennan, joined by Douglas, White, and Marshall) would have declared sex a suspect classification. The plurality fell one vote short of a majority for strict scrutiny.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Brennan's Plurality Reasoning</div>
-      <ul>
-        <li><strong>History of discrimination:</strong> Sex discrimination has a long history analogous to race discrimination. Women were historically denied the ability to hold property, serve on juries, or vote — comparable to the legal position of enslaved people.</li>
-        <li><strong>Immutability:</strong> Sex, like race and national origin, is an immutable characteristic, and imposing legal burdens based on sex violates the principle that burdens should relate to individual responsibility.</li>
-        <li><strong>No relation to ability:</strong> The sex characteristic frequently has no relation to ability to perform or contribute to society, making gender-based distinctions often invidious.</li>
-        <li><strong>Administrative convenience rejected:</strong> The government argued it would be cheaper and easier to simply presume wives were dependent. Brennan found no concrete evidence the differential treatment saved money, and any scheme drawn solely for administrative convenience violates equal protection.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Why Only a Plurality?</div>
-      <div class="concurrence-dissent">
-        <div class="cd-card concur">
-          <h5>Powell Concurrence (+ Burger, Blackmun)</h5>
-          <p>Agreed the law was unconstitutional but said it was <strong>unnecessary to declare sex suspect</strong> — the case could be decided under Reed's rationale. Also noted the Equal Rights Amendment was pending, and the Court should defer to the democratic process rather than preempt it.</p>
-        </div>
-        <div class="cd-card concur">
-          <h5>Stewart Concurrence</h5>
-          <p>Concurred in the judgment only, calling the law an invidious discrimination violating the Constitution under the existing Reed framework.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Significance</div>
-      <p>Brennan never secured a fifth vote for strict scrutiny. The ERA ultimately failed to be ratified, and sex equality claims were thereafter litigated under <strong>intermediate scrutiny</strong> as later articulated in <em>Craig</em> and <em>Virginia</em>. The case raised the key question the casebook asks: Should Brennan have analogized women to discrete and insular minorities under <em>Carolene Products</em> footnote four?</p>
-    </div>
-  </div>
-
-  <!-- ==================== CRAIG ==================== -->
-  <div class="panel" id="craig">
-    <div class="case-header">
-      <h2>Craig v. Boren</h2>
-      <div class="case-cite">429 U.S. 190, 97 S. Ct. 451 (1976)</div>
-      <span class="case-tag">Intermediate scrutiny announced</span>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Facts</div>
-      <p>An Oklahoma statute prohibited the sale of "non-intoxicating" 3.2% beer to males under 21 but allowed sales to females at age 18. Craig, a male between 18 and 20, challenged the gender-based age differential as an equal protection violation.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Issue</div>
-      <p>Whether a gender-based differential in the legal drinking age constitutes a denial of equal protection for males aged 18–20.</p>
-    </div>
-
-    <div class="holding-box">
-      <h4>Holding <span class="vote-chip">7–2</span></h4>
-      <p>The gender-based differential violated equal protection. The Court formally announced <strong>intermediate scrutiny</strong>: classifications by gender must serve <strong>important governmental objectives</strong> and must be <strong>substantially related</strong> to achievement of those objectives.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Brennan's Majority Analysis</div>
-      <ul>
-        <li><strong>New standard articulated:</strong> Previous cases (Reed, Frontiero) had rejected administrative ease and convenience as sufficient justifications for gender classifications. The standard now requires an "important" objective and a "substantial" relationship between the classification and the objective.</li>
-        <li><strong>Objective accepted arguendo:</strong> The Court accepted Oklahoma's asserted goal of enhancing traffic safety for purposes of discussion.</li>
-        <li><strong>Statistics insufficient:</strong> Oklahoma's evidence showed that 0.18% of females and 2% of males aged 18–20 were arrested for alcohol-related driving offenses. Brennan found this disparity statistically insubstantial — a 2% correlation between maleness and drunk driving was too tenuous to serve as a proxy.</li>
-        <li><strong>Overbreadth:</strong> The statute only prohibited the <em>sale</em> of 3.2% beer to young males, not their actual drinking, making the relationship to traffic safety even more attenuated.</li>
-        <li><strong>Prior cases had rejected better evidence:</strong> Earlier decisions had struck down gender-based laws even when they rested on far stronger empirical relationships than this one.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Concurrences &amp; Dissents</div>
-      <div class="concurrence-dissent">
-        <div class="cd-card concur">
-          <h5>Powell (Concurring)</h5>
-          <p>Viewed it as a relatively easy case under Reed. Agreed the classification lacked a fair and substantial relation to the objective. Did not fully endorse the new "intermediate" label.</p>
-        </div>
-        <div class="cd-card concur">
-          <h5>Stevens (Concurring)</h5>
-          <p>Skeptical of rigid tiers of scrutiny entirely. Argued the two-tiered framework is not a completely logical method — courts actually apply a single standard reasonably and consistently. The classification here was objectionable because it was based on an outdated tradition of discrimination.</p>
-        </div>
-        <div class="cd-card dissent">
-          <h5>Rehnquist (Dissenting)</h5>
-          <p>Two main objections: (1) men challenging a gender-based statute should not be able to invoke the same heightened standard as women, because the standard exists to protect historically disadvantaged groups; (2) the statistics adequately supported the rationality of the classification.</p>
-        </div>
-        <div class="cd-card dissent">
-          <h5>Burger (Dissenting)</h5>
-          <p>Agreed in general with Rehnquist.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Key Exam Points</div>
-      <ul>
-        <li>This is <strong>the</strong> case that formally establishes the intermediate scrutiny test for sex classifications.</li>
-        <li>Note it protects <em>both</em> sexes — here the plaintiff was male.</li>
-        <li>The casebook raises whether Reed alone should have disposed of this case, and whether the statistical evidence was really that weak.</li>
-        <li>Rehnquist's dissent raises an important question about how to define "important" objectives and whether the phrases used are too elastic.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ==================== HOGAN ==================== -->
-  <div class="panel" id="hogan">
-    <div class="case-header">
-      <h2>Mississippi University for Women v. Hogan</h2>
-      <div class="case-cite">458 U.S. 718 (1982)</div>
-      <span class="case-tag">"Exceedingly persuasive justification"</span>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Facts</div>
-      <p>Joe Hogan, a male registered nurse in Columbus, Mississippi, was denied admission to the Mississippi University for Women (MUW) School of Nursing's baccalaureate program. MUW, founded in 1884, was the oldest state-supported all-female university in the nation. Hogan was told he could only audit classes, not earn credits toward a degree.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Issue</div>
-      <p>Whether a state policy excluding men from enrolling in a state-supported all-female nursing school violates the Equal Protection Clause.</p>
-    </div>
-
-    <div class="holding-box">
-      <h4>Holding <span class="vote-chip">5–4</span></h4>
-      <p>Yes. The exclusion of men from the nursing program was unconstitutional. The state failed to show an "exceedingly persuasive justification" for the gender-based classification. Justice O'Connor, the first woman on the Court, wrote the majority opinion.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">O'Connor's Framework</div>
-      <ul>
-        <li><strong>Burden on the state:</strong> Defenders of a gender-classifying law must carry the burden of showing an "exceedingly persuasive justification" for the classification.</li>
-        <li><strong>No reliance on stereotypes:</strong> The test must be applied free of fixed notions about the roles and abilities of males and females. The state cannot justify classification based on outdated assumptions.</li>
-        <li><strong>Compensatory purpose rejected:</strong> Mississippi claimed the women-only policy compensated for past discrimination against women. But O'Connor found this failed on the facts — nursing is a field historically <em>dominated</em> by women. A women-only nursing school doesn't compensate for barriers; it perpetuates the stereotype that nursing is exclusively a woman's job.</li>
-        <li><strong>Searching analysis required:</strong> A "benign" justification requires a showing that members of the burdened sex actually suffer a disadvantage related to the classification. The state made no such showing here.</li>
-        <li><strong>Second prong also failed:</strong> MUW allowed men to audit classes, which fatally undercut the claim that excluding men was substantially related to any educational objective. If men in the classroom don't harm the educational experience for auditing purposes, they don't harm it for degree purposes either.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Concurrences &amp; Dissents</div>
-      <div class="concurrence-dissent">
-        <div class="cd-card dissent">
-          <h5>Powell (Dissenting, joined by Rehnquist)</h5>
-          <p>Objected to applying heightened scrutiny when the state was trying to <em>expand</em> women's choices. Distinguished from racial segregation: MUW was one option among many coeducational schools, not a sole-alternative. Single-sex education is a respected pedagogical choice that students voluntarily select.</p>
-        </div>
-        <div class="cd-card dissent">
-          <h5>Burger &amp; Blackmun</h5>
-          <p>Filed separate dissenting notations.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Significance</div>
-      <ul>
-        <li>First sex discrimination case decided after O'Connor joined the Court (first woman justice).</li>
-        <li>Introduced the "exceedingly persuasive justification" language that became central in <em>Virginia</em>.</li>
-        <li>Showed that the intermediate scrutiny test applies to classifications that disadvantage <em>either</em> sex.</li>
-        <li>Casebook footnote distinguishes sexual segregation in education from racial segregation: racial segregated facilities were the <em>sole</em> alternative, while MUW was one of many options.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ==================== VMI ==================== -->
-  <div class="panel" id="vmi">
-    <div class="case-header">
-      <h2>United States v. Virginia</h2>
-      <div class="case-cite">518 U.S. 515, 116 S. Ct. 2264 (1996)</div>
-      <span class="case-tag">VMI Case — Exceedingly persuasive standard applied</span>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Facts</div>
-      <p>Virginia Military Institute (VMI) was the sole single-sex public institution of higher learning among Virginia's 15 public colleges. VMI's mission was to produce "citizen-soldiers" through an "adversative method" featuring physical rigor, mental stress, absence of privacy, minute regulation, and indoctrination in desirable values. When challenged, Virginia proposed creating a parallel women's program (VWIL) at nearby Mary Baldwin College, a private liberal arts school.</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Issue</div>
-      <p>Whether Virginia's exclusion of women from VMI's unique educational opportunities, and the proposed VWIL alternative, satisfy equal protection requirements.</p>
-    </div>
-
-    <div class="holding-box">
-      <h4>Holding <span class="vote-chip">7–1</span></h4>
-      <p>Virginia violated equal protection. Neither VMI's male-only admission policy nor the proposed VWIL remedy was constitutionally adequate. Justice Ginsburg wrote the majority opinion. (Thomas recused; Scalia dissented alone.)</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Ginsburg's Majority Opinion — Key Points</div>
-      <ul>
-        <li><strong>Standard restated:</strong> Parties defending gender-based government action must demonstrate an "exceedingly persuasive justification." The burden is demanding and rests entirely on the State. The justification must be genuine, not hypothesized post hoc, and must not rely on overbroad generalizations about the sexes.</li>
-        <li><strong>"Inherent differences" acknowledged but limited:</strong> Physical differences between men and women are enduring, but they may not be used to create or perpetuate the legal, social, and economic inferiority of women. Sex classifications may not be used for denigration or to place artificial constraints on opportunity.</li>
-        <li><strong>Virginia's diversity justification rejected:</strong> The record — including a 1980s study committee — showed VMI's real reason for excluding women was not to promote educational diversity but to maintain an all-male tradition. The state's interest in providing diverse educational options rang hollow when the only single-sex option benefited men.</li>
-        <li><strong>Adversative method not inherently unsuitable:</strong> Some women can meet VMI's physical standards, thrive in its adversative environment, and want to attend. Generalizations about what "most women" prefer cannot justify denying the opportunity to those individual women who have the will and capacity.</li>
-        <li><strong>VWIL remedy inadequate:</strong> VWIL was a "pale shadow" of VMI — different in curriculum, faculty stature, funding, prestige, alumni network, and methodology. Comparing VWIL to VMI was reminiscent of the inequality found in <em>Sweatt v. Painter</em> (the separate Black law school case). The tangible and intangible qualities that make VMI distinctive could not be replicated.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Concurrences &amp; Dissents</div>
-      <div class="concurrence-dissent">
-        <div class="cd-card concur">
-          <h5>Rehnquist (Concurring in judgment)</h5>
-          <p>Agreed the exclusion was unconstitutional but for narrower reasons. Argued VMI could have survived if Virginia had created a truly equal women's institution. Worried the majority's "exceedingly persuasive" language went beyond traditional intermediate scrutiny. Suggested the real violation was maintaining an all-men's school without providing a comparable institution for women.</p>
-        </div>
-        <div class="cd-card dissent">
-          <h5>Scalia (Dissenting)</h5>
-          <p>Accused the majority of effectively adopting strict scrutiny while claiming to apply intermediate scrutiny. Argued the "exceedingly persuasive justification" phrase contradicts the established intermediate scrutiny framework. Defended VMI's tradition and warned the decision threatened all single-sex public education — and potentially private institutions receiving government support. Called the Court's decision a product of current fashions rather than constitutional principle.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">The Big Debate: What Level of Scrutiny?</div>
-      <p>The casebook highlights the central controversy: Did <em>Virginia</em> covertly raise the standard for sex classifications closer to strict scrutiny? Scalia accused Ginsburg of doing exactly that. Rehnquist's concurrence shared some of this concern. The "exceedingly persuasive justification" language is arguably more demanding than the "important objective / substantially related" formulation from <em>Craig</em>. The casebook also notes the Court purported to reserve the question of whether strict scrutiny should apply but may have functionally moved in that direction.</p>
-    </div>
-  </div>
-
-  <!-- ==================== EXAM PREP ==================== -->
-  <div class="panel" id="exam">
-    <h3 style="font-family:&#39;Cormorant Garamond&#39;,serif; font-size:22px; font-weight:700; margin-bottom:18px;">Exam Prep Questions</h3>
-
-    <div class="exam-q">
-      <h4>1. Why did Brennan fail to secure strict scrutiny for sex in Frontiero?</h4>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <p>Powell (joined by Burger and Blackmun) concurred in the result but refused to declare sex a suspect classification for two reasons: (1) the case could be resolved under the existing Reed rationality framework, making it unnecessary to reach the broader question; and (2) the Equal Rights Amendment was pending ratification, so the Court should defer to the democratic process rather than constitutionally preempt it through judicial action. Stewart also concurred only in the judgment. Thus Brennan had only four votes (himself, Douglas, White, Marshall) for strict scrutiny — one short of a majority.</p>
-      </div>
-    </div>
-
-    <div class="exam-q">
-      <h4>2. What is the intermediate scrutiny test from Craig, and how does it differ from rational basis and strict scrutiny?</h4>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <p><strong>Intermediate scrutiny (Craig):</strong> The classification must serve <em>important</em> governmental objectives and be <em>substantially related</em> to achieving those objectives. This is more demanding than rational basis (which requires only a <em>legitimate</em> interest and a <em>rational</em> relationship) but less demanding than strict scrutiny (which requires a <em>compelling</em> interest and <em>narrow tailoring</em>). The key differences are in the weight of the government interest required and the tightness of the fit between the classification and the objective.</p>
-      </div>
-    </div>
-
-    <div class="exam-q">
-      <h4>3. Why was the "compensatory purpose" defense rejected in Hogan?</h4>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <p>Mississippi argued the women-only nursing school compensated for past discrimination against women. O'Connor rejected this because nursing has historically been <em>dominated</em> by women — there was no past discrimination against women in nursing that needed compensating. Instead, the all-female policy perpetuated the stereotype that nursing is exclusively women's work. O'Connor established that a compensatory justification requires a searching analysis showing that the burdened sex actually suffers a disadvantage related to the classification — not just an assertion of benign purpose.</p>
-      </div>
-    </div>
-
-    <div class="exam-q">
-      <h4>4. Did United States v. Virginia effectively adopt strict scrutiny? What's the argument on each side?</h4>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <p><strong>Yes (Scalia's view):</strong> The "exceedingly persuasive justification" standard is functionally equivalent to strict scrutiny. The majority required the state to demonstrate a genuine (not post hoc) justification, rejected generalizations about sex differences, demanded the classification not be based on overbroad assumptions, and required an extremely close fit. This goes well beyond the "important objective / substantially related" test from Craig.</p>
-        <p style="margin-top:8px;"><strong>No (Ginsburg's framing):</strong> The majority explicitly said it was not equating sex with race for equal protection purposes. It acknowledged "inherent differences" between the sexes remain cause for celebration, not denigration — language that would be inappropriate under strict scrutiny for race. The "exceedingly persuasive justification" language originated in Hogan, not Virginia, and simply restates the Craig standard with emphasis. The Court explicitly reserved the question of whether to elevate to strict scrutiny.</p>
-        <p style="margin-top:8px;"><strong>For the exam:</strong> The best answer acknowledges this is genuinely ambiguous. The doctrinal label remains "intermediate scrutiny," but the application in Virginia was notably more rigorous than in Craig — suggesting the standard may be "intermediate scrutiny with bite."</p>
-      </div>
-    </div>
-
-    <div class="exam-q">
-      <h4>5. How does the VWIL remedy fail under the Sweatt v. Painter analogy?</h4>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <p>In <em>Sweatt</em>, Texas created a separate law school for Black students rather than admitting them to UT Law. The Court found the separate school could not match UT's intangible qualities — reputation, faculty prestige, alumni influence, tradition. Ginsburg drew the same comparison for VWIL: it lacked VMI's adversative method, its prestigious alumni network, its 157-year history, its faculty stature, and its funding levels. The intangible qualities that make an institution great — prestige, standing in the community, tradition — cannot be replicated overnight in a parallel program. Both cases stand for the principle that separate is inherently unequal when it comes to premier educational opportunities.</p>
-      </div>
-    </div>
-
-    <div class="exam-q">
-      <h4>6. Trace the doctrinal evolution: How does each case build on the prior one?</h4>
-      <button class="toggle-btn" onclick="toggleAnswer(this)">Show Answer</button>
-      <div class="answer">
-        <p><strong>Reed (1971):</strong> First time the Court struck down a sex-based classification, though nominally under rational basis review — but clearly applying more bite than usual.</p>
-        <p style="margin-top:6px;"><strong>Frontiero (1973):</strong> Brennan's plurality tried to leap to strict scrutiny, analogizing sex to race. Failed to get five votes because of the pending ERA and prudential concerns.</p>
-        <p style="margin-top:6px;"><strong>Craig (1976):</strong> Settled on a middle path — intermediate scrutiny — as the consensus position. Important objectives + substantially related means.</p>
-        <p style="margin-top:6px;"><strong>Hogan (1982):</strong> Applied Craig but added the "exceedingly persuasive justification" language, and showed the test applies even when the classification purportedly benefits women (compensatory purpose scrutinized).</p>
-        <p style="margin-top:6px;"><strong>Virginia (1996):</strong> Ginsburg made "exceedingly persuasive justification" central, applied it rigorously, demanded genuine rather than post hoc justifications, rejected reliance on generalizations, and required the remedy (VWIL) to be truly comparable. Whether this is "Craig plus" or "almost strict scrutiny" remains the open question.</p>
-      </div>
-    </div>
-
-    <div class="print-note">
-      Study guide for Chapter 9, Section 3 — Sex Discrimination (pp. 808–827)
-    </div>
-  </div>
-
-</div>
+<div class="content" id="content"></div>
 
 <script>
-function showTab(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+const crimes = [
+  {
+    category: "HOMICIDE",
+    items: [
+      {
+        name: "First Degree Murder",
+        elements: [
+          "Intentional killing",
+          "Of a human being",
+          "With premeditation (some thought before acting)",
+          "And deliberation (conscious choice to kill)"
+        ],
+        notes: "Carroll: seconds enough for P+D. Anderson (CA): needs planning + motive + manner. Max: life without parole or death.",
+        color: "#DC2626"
+      },
+      {
+        name: "Felony Murder (1st Degree)",
+        elements: [
+          "Commission of (or attempt to commit) an inherently dangerous felony (BREAKRSS)",
+          "Unintentional killing occurs during or in flight from the felony",
+          "Causal connection between felony and death",
+          "Mens rea transferred from the felony intent"
+        ],
+        notes: "BREAKRSS: Burglary, Robbery, Escape, Arson, Kidnapping, Rape, Sodomy, Serious Sex Crimes. Strict liability for the killing. Limitations: inherently dangerous, independent felonious purpose, merger doctrine, agency theory (~75%), proximate cause, time period, in furtherance.",
+        color: "#DC2626"
+      },
+      {
+        name: "Second Degree Murder",
+        elements: [
+          "Intentional killing WITHOUT premeditation and deliberation",
+          "OR recklessness + extreme indifference to human life ('depraved heart')",
+          "OR intent to inflict great bodily harm resulting in death"
+        ],
+        notes: "Malone (Russian Roulette): gross recklessness = malice. MPC: extreme recklessness manifesting extreme indifference to value of human life.",
+        color: "#EA580C"
+      },
+      {
+        name: "Voluntary Manslaughter (Heat of Passion)",
+        elements: [
+          "Intentional killing",
+          "Committed under influence of passion / heat of blood",
+          "Adequate or reasonable provocation",
+          "Before reasonable time to cool off",
+          "Resulting in temporary loss of self-control"
+        ],
+        notes: "Girouard (majority): only recognized categories (battery, mutual combat, adultery discovery). Maher (minority): anything that would provoke a reasonable person → jury decides. Words alone generally insufficient.",
+        color: "#F59E0B"
+      },
+      {
+        name: "Involuntary Manslaughter",
+        elements: [
+          "Unintentional killing",
+          "Caused by criminal negligence or recklessness",
+          "(or) during commission of an unlawful act (misdemeanor-manslaughter rule)"
+        ],
+        notes: "Welansky: 'wanton and reckless' = grave danger apparent + chose to run the risk. Williams: ordinary negligence sufficient in some jurisdictions (WA, since repealed). MPC splits into manslaughter (recklessness) and negligent homicide.",
+        color: "#EAB308"
+      },
+      {
+        name: "Negligent Homicide (MPC)",
+        elements: [
+          "Unintentional killing",
+          "Defendant should have been aware of substantial and unjustifiable risk",
+          "Gross deviation from standard of care of a reasonable person"
+        ],
+        notes: "Lesser than manslaughter under MPC. Person should have known but didn't (vs. recklessness where person consciously disregards).",
+        color: "#CA8A04"
+      },
+      {
+        name: "Misdemeanor-Manslaughter",
+        elements: [
+          "Commission of an unlawful act (misdemeanor)",
+          "That act caused someone's death",
+          "Proximate cause between act and death"
+        ],
+        notes: "Limitations: proximate cause required, some courts limit to malum in se offenses, some require dangerousness. Commonwealth v. Williams: expired license didn't cause crash.",
+        color: "#CA8A04"
+      }
+    ]
+  },
+  {
+    category: "INCHOATE CRIMES",
+    items: [
+      {
+        name: "Attempt",
+        elements: [
+          "Specific intent (purpose) to commit the target crime",
+          "A substantial step toward commission (MPC) OR act tending to effect commission (common law proximity test)",
+          "Failure to complete the crime"
+        ],
+        notes: "Rizzo: proximity test — must come very near to accomplishment. Jackson: substantial step + strongly corroborative of criminal intent. Mens rea is always intent/purpose, even if completed crime only requires recklessness. Abandonment defense (MPC): voluntary and complete renunciation.",
+        color: "#7C3AED"
+      },
+      {
+        name: "Solicitation",
+        elements: [
+          "Intentionally encouraging, requesting, or commanding another",
+          "To commit a crime",
+          "With purpose that the crime be committed"
+        ],
+        notes: "Davis: solicitation alone not attempt. Church: solicitation + detailed planning + payment = attempt. Independent crime under MPC §5.02. Crime is complete upon the asking — no need for the other person to agree or act.",
+        color: "#7C3AED"
+      },
+      {
+        name: "Conspiracy",
+        elements: [
+          "Agreement between two or more persons (bilateral) or by the defendant (unilateral/MPC)",
+          "To commit a crime",
+          "Intent that the target crime be committed",
+          "Overt act in furtherance of the agreement (most jurisdictions)"
+        ],
+        notes: "Does NOT merge into completed crime (unlike attempt). Pinkerton: co-conspirators liable for foreseeable crimes in furtherance. Wharton's Rule: can't charge conspiracy when crime inherently requires 2+ people. Kotteakos: hub-and-spoke needs a 'rim.' Bruno: chain conspiracy = one conspiracy if each link knows others exist + community of interest.",
+        color: "#7C3AED"
+      }
+    ]
+  },
+  {
+    category: "PROPERTY & OTHER SPECIFIC CRIMES",
+    items: [
+      {
+        name: "Larceny",
+        elements: [
+          "Intentional taking",
+          "And carrying away (asportation)",
+          "Of the property of another",
+          "With further intent to deprive the owner permanently (or unreasonably long time)"
+        ],
+        notes: "Specific intent crime (double intent). The 'further intent' to permanently deprive distinguishes it from trespass.",
+        color: "#2563EB"
+      },
+      {
+        name: "Robbery",
+        elements: [
+          "Larceny (taking + carrying away + property of another + intent to deprive)",
+          "By force, fear, intimidation, threat, or violence",
+          "Against a person (not just property)"
+        ],
+        notes: "Specific intent crime. Larceny + force = robbery. Crime against a person, not just property.",
+        color: "#2563EB"
+      },
+      {
+        name: "Burglary",
+        elements: [
+          "Intentional breaking and entering",
+          "Of the dwelling/structure of another",
+          "With intent to commit a crime once inside"
+        ],
+        notes: "Specific intent crime. Breaking + entering = general intent, but with intent to commit crime inside = specific intent. A 'crime in the nature of attempt.' Independent felonious purpose for felony murder analysis.",
+        color: "#2563EB"
+      },
+      {
+        name: "Arson",
+        elements: [
+          "Willful and malicious",
+          "Burning of a structure/dwelling"
+        ],
+        notes: "Inherently dangerous felony for felony murder (BREAKRSS). Serne: putting people at risk by setting fire = murder if death results.",
+        color: "#2563EB"
+      },
+      {
+        name: "Assault",
+        elements: [
+          "An act creating a reasonable apprehension",
+          "Of imminent harmful or offensive contact",
+          "(OR) an attempted battery"
+        ],
+        notes: "Hood: treated as general intent for intoxication purposes. Assault with intent to kill/rape = specific intent.",
+        color: "#2563EB"
+      },
+      {
+        name: "Battery",
+        elements: [
+          "Unlawful application of force",
+          "To the person of another",
+          "Resulting in harmful or offensive contact"
+        ],
+        notes: "General intent crime. Often the completed form of assault.",
+        color: "#2563EB"
+      },
+      {
+        name: "Rape",
+        elements: [
+          "Sexual intercourse",
+          "By force or threat of force",
+          "Without consent of the victim"
+        ],
+        notes: "Sherry: mistake of consent not a defense; man proceeds at own peril. Fischer: mistake of fact re consent not a defense to IDSI. General intent crime (all modern jurisdictions). Physical resistance not required — any resistance showing lack of consent suffices. Mens rea debate: purpose (0), knowledge (10), recklessly (12), negligently (14).",
+        color: "#2563EB"
+      },
+      {
+        name: "Receiving Stolen Property",
+        elements: [
+          "Receiving property",
+          "That has been stolen",
+          "With knowledge that it was stolen"
+        ],
+        notes: "Jaffe: if property no longer stolen at time of receipt → legal impossibility (traditional). Knowledge element = actual knowledge, not mere belief.",
+        color: "#2563EB"
+      },
+      {
+        name: "Kidnapping",
+        elements: [
+          "Unlawful confinement or movement",
+          "Of another person",
+          "By force, threat, or deception"
+        ],
+        notes: "BREAKRSS felony for felony murder. Inherently dangerous.",
+        color: "#2563EB"
+      }
+    ]
+  },
+  {
+    category: "COMPLICITY & VICARIOUS LIABILITY",
+    items: [
+      {
+        name: "Accomplice Liability (Aiding & Abetting)",
+        elements: [
+          "Intent that the crime be committed",
+          "Acts of aiding, abetting, assisting, or facilitating the crime",
+          "The principal commits (or attempts) the crime"
+        ],
+        notes: "Punished same as principal. Federal: aids, abets, counsels, commands, induces, or procures. Lauria: knowledge of criminal use ≠ intent to participate (for misdemeanors). For serious felonies, knowledge alone may suffice.",
+        color: "#059669"
+      },
+      {
+        name: "Accessory After the Fact",
+        elements: [
+          "Assist a person who has committed a crime",
+          "After the crime has been committed",
+          "With knowledge that the person committed the crime",
+          "With intent to help avoid arrest or punishment"
+        ],
+        notes: "Lesser punishment than principal. Separate and distinct from accomplice liability.",
+        color: "#059669"
+      },
+      {
+        name: "Pinkerton Liability (Conspiracy-Based)",
+        elements: [
+          "Membership in an ongoing conspiracy",
+          "Co-conspirator commits a substantive crime",
+          "Crime falls within scope of conspiracy OR is reasonably foreseeable",
+          "Crime committed in furtherance of the conspiracy"
+        ],
+        notes: "Vicarious liability WITHOUT personal participation. ~75% of jurisdictions. Rejected by MPC and NY (McGee). Alvarez: extended to unintended but foreseeable crimes during drug conspiracy.",
+        color: "#059669"
+      }
+    ]
+  },
+  {
+    category: "STRICT LIABILITY OFFENSES",
+    items: [
+      {
+        name: "Strict Liability / Public Welfare Offenses",
+        elements: [
+          "Voluntary act (actus reus)",
+          "That violates the statute",
+          "NO mens rea required"
+        ],
+        notes: "Balint: narcotics at own peril. Dotterweich: mislabeled drugs. Morissette: common-law crimes (stealing) still require mens rea even if statute is silent. MPC: strict liability only for 'violations' (not crimes), punished by fines only, no imprisonment. Determining SL: words of statute, legislative history, maximum penalty.",
+        color: "#6B7280"
+      },
+      {
+        name: "Statutory Rape (Prince Principle)",
+        elements: [
+          "Sexual intercourse with a minor",
+          "Under the statutory age",
+          "Regardless of defendant's knowledge of age"
+        ],
+        notes: "Prince: mistake of fact about age not a defense when committing a morally wrong act. Lesser crime principle: if facts as believed would still be a crime, no defense. MPC disfavors strict liability but this remains an exception.",
+        color: "#6B7280"
+      }
+    ]
+  },
+  {
+    category: "DEFENSES (Quick Reference)",
+    items: [
+      {
+        name: "Self-Defense (Justification)",
+        elements: [
+          "Resisting present or imminent unlawful force",
+          "No more force than reasonably necessary",
+          "Deadly force only against deadly danger",
+          "Not the initial aggressor (exceptions: non-deadly aggressor facing deadly force, or withdrew)",
+          "Duty to retreat (some jurisdictions; eliminated by Stand Your Ground)"
+        ],
+        notes: "Imperfect self-defense: honest but unreasonable belief → reduces to VM. BWS: admissible to explain perception but standard varies (objective, hybrid, subjective). Norman: sleeping abuser = no imminence. MPC: 'immediately necessary' (broader than 'imminent').",
+        color: "#0891B2"
+      },
+      {
+        name: "Necessity / Choice of Evils (Justification)",
+        elements: [
+          "Choice of evils — chose the lesser evil",
+          "Acted to prevent imminent harm",
+          "Direct causal relationship between conduct and harm averted",
+          "No legal alternatives to violating the law",
+          "Situation not caused by defendant's recklessness"
+        ],
+        notes: "Schoon: NEVER available for indirect civil disobedience. Cannot justify taking life of innocent person. Rarely successful. Conjunctive — failure on any element = no defense.",
+        color: "#0891B2"
+      },
+      {
+        name: "Duress (Excuse)",
+        elements: [
+          "Threat by another person (not circumstances)",
+          "Reasonable fear of imminent death or serious bodily harm (common law) OR coercion a person of reasonable firmness couldn't resist (MPC)",
+          "No reasonable opportunity to escape",
+          "Not available for murder (common law); MPC allows it"
+        ],
+        notes: "Toscano: NJ adopted MPC broader standard. Distinction from necessity: duress = human threat (excuse), necessity = circumstances (justification). MPC: person of reasonable firmness in actor's situation.",
+        color: "#0891B2"
+      },
+      {
+        name: "Voluntary Intoxication (Partial Defense)",
+        elements: [
+          "Defendant was voluntarily intoxicated",
+          "Intoxication negated the specific intent required for the crime"
+        ],
+        notes: "Roberts: admissible to negate specific intent (intent to kill). Hood: NOT admissible for general intent crimes (assault). MPC: admissible for purpose/knowledge, NOT for recklessness (getting drunk = conscious disregard). ~14 states bar entirely. Egelhoff: constitutional to exclude.",
+        color: "#0891B2"
+      },
+      {
+        name: "Insanity (Excuse)",
+        elements: [
+          "Mental disease or defect at time of the act",
+          "PLUS (varies by test):",
+          "M'Naghten: didn't know nature/quality of act OR didn't know it was wrong",
+          "Irresistible Impulse: lost power to control actions",
+          "Durham: act was product of mental disease (rarely used)",
+          "MPC/ALI: lacked substantial capacity to appreciate criminality OR conform conduct to law"
+        ],
+        notes: "Burden varies: some on prosecution, some on defense (post-Hinckley). Federal law: basically M'Naghten + burden on defendant. 5 states abolished entirely. NGRI → hospital, not acquittal. Rarely used (~0.25% of cases), rarely successful.",
+        color: "#0891B2"
+      },
+      {
+        name: "Mistake of Fact",
+        elements: [
+          "Defendant held an honest (and sometimes reasonable) mistaken belief about a fact",
+          "That negates the mens rea required for the crime"
+        ],
+        notes: "Specific intent: unreasonable mistake = defense. General intent: only reasonable mistake = defense. Strict liability: NO mistake defense. Morgan (overruled): unreasonable but honest belief once sufficed for rape (now general intent = need reasonable).",
+        color: "#0891B2"
+      },
+      {
+        name: "Mistake of Law",
+        elements: [
+          "Generally NOT a defense ('ignorance of the law is no excuse')",
+          "Exception: Lambert — crime of omission + reasonable person wouldn't know about the law",
+          "Exception: official reliance (due process — Raley v. Ohio)"
+        ],
+        notes: "Hopkins: reliance on state attorney advice not a defense. MPC: allows defense for minor regulatory offenses if relied on official statement, but only ONCE. Albertini: rely on latest ruling in your circuit.",
+        color: "#0891B2"
+      },
+      {
+        name: "Impossibility",
+        elements: [
+          "Pure Legal Impossibility: act is not a crime → ALWAYS a defense",
+          "Factual Impossibility: crime fails due to external facts → NOT a defense",
+          "Mixed Fact/Law: debated — defense in some jurisdictions, not in MPC"
+        ],
+        notes: "Jaffe: cloth not stolen = legal impossibility (defense). Dlugash: victim possibly dead = no defense under MPC §110.10. Oviedo: objective acts test (middle ground). Lady Eldon: true legal impossibility only when no crime exists on the books. MPC abolishes impossibility defense entirely.",
+        color: "#0891B2"
+      },
+      {
+        name: "Abandonment / Renunciation",
+        elements: [
+          "Voluntary and complete renunciation of criminal purpose",
+          "Not motivated by increased risk of detection or difficulty",
+          "Must be for the 'right reasons'"
+        ],
+        notes: "MPC §5.01(4). Johnston: abandoned because only $50 → not voluntary. McNeal: abducted girl then released → court said not voluntary. Ross: similar facts but court accepted defense.",
+        color: "#0891B2"
+      }
+    ]
+  },
+  {
+    category: "FOUNDATIONAL CONCEPTS",
+    items: [
+      {
+        name: "Actus Reus",
+        elements: [
+          "A voluntary physical act (or culpable omission where legal duty exists)"
+        ],
+        notes: "Martin: involuntary placement → no actus reus. Newton: unconsciousness negates voluntariness. Jones: omission requires legal duty (statute, relationship, contract, voluntary assumption of care).",
+        color: "#475569"
+      },
+      {
+        name: "Mens Rea (MPC Hierarchy)",
+        elements: [
+          "Purpose: conscious object to engage in conduct / cause result",
+          "Knowledge: practically certain conduct will cause result",
+          "Recklessness: consciously disregards substantial and unjustifiable risk",
+          "Negligence: should have been aware of substantial and unjustifiable risk"
+        ],
+        notes: "Cunningham: 'maliciously' = intended harm or reckless as to whether harm occurs. Purpose/Knowledge = specific intent. Recklessness/Negligence = general intent.",
+        color: "#475569"
+      },
+      {
+        name: "Legality Principle",
+        elements: [
+          "Nulla poena sine lege — no punishment without law",
+          "Fair warning / notice",
+          "No retroactivity (Ex Post Facto)",
+          "No vague or overbroad statutes (Due Process)"
+        ],
+        notes: "Papachristou: vagrancy ordinance unconstitutional (no clear standards). McBoyle: airplane not a 'vehicle.' Cohen v. California: breach of peace too vague. Lambert: due process requires notice for omission crimes.",
+        color: "#475569"
+      },
+      {
+        name: "Proportionality (8th Amendment)",
+        elements: [
+          "Punishment must be proportional to the offense",
+          "No cruel and unusual punishment"
+        ],
+        notes: "Coker: death for rape = disproportionate. Atkins: no death penalty for intellectually disabled. Roper: no death penalty for juveniles. Miller: no mandatory LWOP for juveniles. Rummel: three strikes upheld (controversial).",
+        color: "#475569"
+      }
+    ]
+  }
+];
+
+const totalCount = crimes.reduce((s, c) => s + c.items.length, 0);
+document.getElementById('totalCount').textContent = totalCount;
+
+let openCat = null;
+let openCrime = null;
+
+function render(searchTerm) {
+  const container = document.getElementById('content');
+  const q = (searchTerm || '').trim().toLowerCase();
+
+  const filtered = q
+    ? crimes.map(cat => ({
+        ...cat,
+        items: cat.items.filter(item =>
+          item.name.toLowerCase().includes(q) ||
+          item.elements.some(e => e.toLowerCase().includes(q)) ||
+          item.notes.toLowerCase().includes(q)
+        )
+      })).filter(cat => cat.items.length > 0)
+    : crimes;
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="no-results">No crimes found matching "${searchTerm}"</div>`;
+    return;
+  }
+
+  let html = '';
+
+  filtered.forEach((cat, catIdx) => {
+    const catOpen = q || openCat === cat.category;
+
+    html += `<div class="category">`;
+    html += `<button class="cat-btn ${catOpen ? 'open' : ''}" onclick="toggleCat('${cat.category}')">
+      <span>${cat.category} <span class="count">(${cat.items.length})</span></span>
+      <span class="toggle">${catOpen ? '−' : '+'}</span>
+    </button>`;
+
+    html += `<div class="cat-body ${catOpen ? 'open' : ''}">`;
+
+    cat.items.forEach((crime, crimeIdx) => {
+      const key = `${catIdx}-${crimeIdx}`;
+      const crimeOpen = q || openCrime === key;
+
+      html += `<div class="crime">`;
+      html += `<button class="crime-btn ${crimeOpen ? 'open' : ''}" onclick="toggleCrime('${key}', event)">
+        <span class="crime-dot" style="background:${crime.color}"></span>
+        <span style="flex:1">${crime.name}</span>
+        <span class="crime-arrow">▸</span>
+      </button>`;
+
+      html += `<div class="crime-detail ${crimeOpen ? 'open' : ''}" id="detail-${key}">
+        <div class="detail-label" style="color:${crime.color}">Elements</div>
+        <ol>`;
+      crime.elements.forEach(el => {
+        html += `<li>${el}</li>`;
+      });
+      html += `</ol>
+        <div class="crime-notes" style="border-left:3px solid ${crime.color}33">
+          ${crime.notes}
+        </div>
+      </div>`;
+
+      html += `</div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
 }
 
-function toggleAnswer(btn) {
-  const answer = btn.nextElementSibling;
-  answer.classList.toggle('show');
-  btn.textContent = answer.classList.contains('show') ? 'Hide Answer' : 'Show Answer';
+function toggleCat(name) {
+  openCat = openCat === name ? null : name;
+  openCrime = null;
+  render(document.getElementById('searchInput').value);
 }
+
+function toggleCrime(key, e) {
+  e.stopPropagation();
+  openCrime = openCrime === key ? null : key;
+  render(document.getElementById('searchInput').value);
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  openCat = null;
+  openCrime = null;
+  render(this.value);
+});
+
+render('');
 </script>
-
-
-</body></html>
+</body>
+</html>
