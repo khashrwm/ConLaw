@@ -3,762 +3,525 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criminal Law — Master Crime List</title>
+<title>Constitutional Law — MC Practice Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Source Serif 4', Georgia, serif;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    min-height: 100vh;
-    color: #e2e8f0;
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0f1117;--surface:#181b24;--surface2:#1f2330;--border:#2a2e3b;
+    --text:#e2e4ea;--text-muted:#8b90a0;--accent:#6c8cff;--accent-dim:#3a4d8c;
+    --correct:#34d399;--correct-bg:rgba(52,211,153,.08);
+    --wrong:#f87171;--wrong-bg:rgba(248,113,113,.08);
+    --gold:#fbbf24;--radius:10px;
+  }
+  html{font-size:16px;scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'Source Serif 4',Georgia,serif;line-height:1.7;
+    min-height:100vh;
+  }
+  /* grain overlay */
+  body::after{
+    content:'';position:fixed;inset:0;pointer-events:none;opacity:.03;
+    background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .header {
-    background: linear-gradient(180deg, rgba(220,38,38,0.12) 0%, transparent 100%);
-    border-bottom: 1px solid rgba(220,38,38,0.25);
-    padding: 36px 24px 28px;
-    text-align: center;
+  .hero{
+    text-align:center;padding:4rem 1.5rem 2.5rem;
+    background:linear-gradient(175deg,#151825 0%,#0f1117 100%);
+    border-bottom:1px solid var(--border);position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(108,140,255,.1) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);
+    letter-spacing:-.02em;line-height:1.15;margin-bottom:.5rem;position:relative;
+    background:linear-gradient(135deg,#e2e4ea 30%,#6c8cff 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p{color:var(--text-muted);font-size:1.05rem;max-width:520px;margin:0 auto;}
+
+  /* score strip */
+  .score-strip{
+    position:sticky;top:0;z-index:100;
+    background:rgba(15,17,23,.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    display:flex;justify-content:center;gap:2rem;padding:.75rem 1rem;
+    font-family:'JetBrains Mono',monospace;font-size:.85rem;
+  }
+  .score-strip span{display:flex;align-items:center;gap:.35rem}
+  .score-strip .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .dot-correct{background:var(--correct)}.dot-wrong{background:var(--wrong)}.dot-total{background:var(--accent)}
+
+  .container{max-width:760px;margin:0 auto;padding:1.5rem 1.25rem 6rem}
+
+  /* class divider */
+  .class-divider{
+    margin:3rem 0 1.5rem;padding:.6rem 1rem;
+    font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;
+    color:var(--accent);border-left:3px solid var(--accent);
+    background:linear-gradient(90deg,rgba(108,140,255,.06),transparent 60%);
+    border-radius:0 var(--radius) var(--radius) 0;
   }
 
-  .header-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #94a3b8;
-    margin-bottom: 8px;
+  /* question card */
+  .q-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:1.5rem;margin-bottom:1.25rem;
+    transition:border-color .3s;
   }
-
-  .header h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: #f8fafc;
-    letter-spacing: -0.5px;
-    margin-bottom: 4px;
+  .q-card.answered-correct{border-color:var(--correct)}
+  .q-card.answered-wrong{border-color:var(--wrong)}
+  .q-num{
+    font-family:'JetBrains Mono',monospace;font-size:.75rem;
+    color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;
   }
+  .q-text{font-size:1.02rem;margin-bottom:1.15rem;line-height:1.75}
 
-  .header-count {
-    font-size: 14px;
-    color: #64748b;
-    margin-bottom: 22px;
+  .options{display:flex;flex-direction:column;gap:.5rem}
+  .opt-btn{
+    background:var(--surface2);border:1px solid var(--border);
+    border-radius:8px;padding:.75rem 1rem;text-align:left;
+    color:var(--text);font-family:'Source Serif 4',serif;font-size:.95rem;
+    cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:.6rem;
+    line-height:1.6;
   }
-
-  .search-wrap {
-    max-width: 420px;
-    margin: 0 auto;
+  .opt-btn:hover:not(.locked){background:#252937;border-color:#3a3f52}
+  .opt-btn .letter{
+    font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8rem;
+    min-width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+    border-radius:6px;background:var(--border);color:var(--text-muted);flex-shrink:0;
+    margin-top:2px;transition:all .2s;
   }
+  .opt-btn.selected-correct{background:var(--correct-bg);border-color:var(--correct)}
+  .opt-btn.selected-correct .letter{background:var(--correct);color:#0f1117}
+  .opt-btn.selected-wrong{background:var(--wrong-bg);border-color:var(--wrong)}
+  .opt-btn.selected-wrong .letter{background:var(--wrong);color:#0f1117}
+  .opt-btn.reveal-correct{border-color:var(--correct);opacity:.7}
+  .opt-btn.reveal-correct .letter{background:var(--correct);color:#0f1117}
+  .opt-btn.locked{cursor:default;opacity:.55}
+  .opt-btn.locked.selected-correct,.opt-btn.locked.selected-wrong,.opt-btn.locked.reveal-correct{opacity:1}
 
-  .search-wrap input {
-    width: 100%;
-    padding: 11px 16px;
-    border-radius: 8px;
-    border: 1px solid #334155;
-    background: #1e293b;
-    color: #e2e8f0;
-    font-size: 14px;
-    font-family: 'Source Serif 4', Georgia, serif;
-    outline: none;
-    transition: border-color 0.2s;
+  .feedback{
+    margin-top:.75rem;padding:.6rem .9rem;border-radius:8px;font-size:.9rem;
+    font-family:'JetBrains Mono',monospace;display:none;
   }
+  .feedback.show{display:block}
+  .feedback.correct-fb{background:var(--correct-bg);color:var(--correct)}
+  .feedback.wrong-fb{background:var(--wrong-bg);color:var(--wrong)}
 
-  .search-wrap input:focus {
-    border-color: #475569;
+  /* bottom bar */
+  .bottom-bar{
+    position:fixed;bottom:0;left:0;right:0;
+    background:rgba(15,17,23,.9);backdrop-filter:blur(12px);
+    border-top:1px solid var(--border);padding:.8rem;text-align:center;
   }
-
-  .search-wrap input::placeholder {
-    color: #475569;
+  .reset-btn{
+    background:var(--accent-dim);color:#fff;border:none;
+    padding:.55rem 1.6rem;border-radius:8px;font-family:'JetBrains Mono',monospace;
+    font-size:.85rem;cursor:pointer;transition:background .2s;
   }
+  .reset-btn:hover{background:var(--accent)}
 
-  .content {
-    padding: 20px 16px 50px;
-    max-width: 740px;
-    margin: 0 auto;
-  }
-
-  .category {
-    margin-bottom: 10px;
-  }
-
-  .cat-btn {
-    width: 100%;
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(30, 41, 59, 0.5);
-    border: 1px solid #334155;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #f1f5f9;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-align: left;
-    transition: background 0.2s;
-  }
-
-  .cat-btn:hover {
-    background: rgba(51, 65, 85, 0.5);
-  }
-
-  .cat-btn.open {
-    background: rgba(51, 65, 85, 0.6);
-    border-radius: 8px 8px 0 0;
-  }
-
-  .cat-btn .count {
-    font-size: 11px;
-    color: #64748b;
-    font-weight: 400;
-  }
-
-  .cat-btn .toggle {
-    font-size: 18px;
-    color: #64748b;
-  }
-
-  .cat-body {
-    border: 1px solid #334155;
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    overflow: hidden;
-    display: none;
-  }
-
-  .cat-body.open {
-    display: block;
-  }
-
-  .crime {
-    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-  }
-
-  .crime:last-child {
-    border-bottom: none;
-  }
-
-  .crime-btn {
-    width: 100%;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(15, 23, 42, 0.4);
-    border: none;
-    cursor: pointer;
-    color: #e2e8f0;
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-align: left;
-    transition: background 0.15s;
-  }
-
-  .crime-btn:hover {
-    background: rgba(30, 41, 59, 0.6);
-  }
-
-  .crime-btn.open {
-    background: rgba(30, 41, 59, 0.8);
-  }
-
-  .crime-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    opacity: 0.8;
-  }
-
-  .crime-arrow {
-    font-size: 14px;
-    color: #475569;
-    transition: transform 0.15s;
-    margin-left: auto;
-  }
-
-  .crime-btn.open .crime-arrow {
-    transform: rotate(90deg);
-  }
-
-  .crime-detail {
-    padding: 4px 16px 18px 36px;
-    background: rgba(15, 23, 42, 0.6);
-    display: none;
-  }
-
-  .crime-detail.open {
-    display: block;
-  }
-
-  .detail-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    opacity: 0.9;
-  }
-
-  .crime-detail ol {
-    margin: 0 0 14px 0;
-    padding-left: 18px;
-    line-height: 1.75;
-  }
-
-  .crime-detail ol li {
-    font-size: 13.5px;
-    color: #cbd5e1;
-    margin-bottom: 2px;
-  }
-
-  .crime-notes {
-    font-size: 12.5px;
-    color: #94a3b8;
-    line-height: 1.65;
-    padding: 10px 12px;
-    background: rgba(30, 41, 59, 0.5);
-    border-radius: 6px;
-  }
-
-  .no-results {
-    text-align: center;
-    padding: 40px;
-    color: #475569;
-    font-size: 14px;
+  @media(max-width:600px){
+    .container{padding:1rem .75rem 5rem}
+    .q-card{padding:1.1rem}
+    .hero{padding:2.5rem 1rem 1.5rem}
   }
 </style>
 </head>
 <body>
-
-<div class="header">
-  <div class="header-sub">Criminal Law Final Review</div>
-  <h1>Master Crime List</h1>
-  <div class="header-count"><span id="totalCount"></span> crimes &amp; defenses · Elements for memorization</div>
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="Search crimes, elements, or notes..." autocomplete="off">
-  </div>
+<div class="hero">
+  <h1>Constitutional Law MC Quiz</h1>
+  <p>Practice questions from your class assignments. Pick an answer to see instant feedback.</p>
 </div>
 
-<div class="content" id="content"></div>
+<div class="score-strip" id="scoreStrip">
+  <span><span class="dot dot-correct"></span> Correct: <strong id="sCorrect">0</strong></span>
+  <span><span class="dot dot-wrong"></span> Wrong: <strong id="sWrong">0</strong></span>
+  <span><span class="dot dot-total"></span> Remaining: <strong id="sRemain">0</strong></span>
+</div>
+
+<div class="container" id="quizContainer"></div>
+
+<div class="bottom-bar">
+  <button class="reset-btn" onclick="resetQuiz()">Reset All Answers</button>
+</div>
 
 <script>
-const crimes = [
-  {
-    category: "HOMICIDE",
-    items: [
-      {
-        name: "First Degree Murder",
-        elements: [
-          "Intentional killing",
-          "Of a human being",
-          "With premeditation (some thought before acting)",
-          "And deliberation (conscious choice to kill)"
-        ],
-        notes: "Carroll: seconds enough for P+D. Anderson (CA): needs planning + motive + manner. Max: life without parole or death.",
-        color: "#DC2626"
-      },
-      {
-        name: "Felony Murder (1st Degree)",
-        elements: [
-          "Commission of (or attempt to commit) an inherently dangerous felony (BREAKRSS)",
-          "Unintentional killing occurs during or in flight from the felony",
-          "Causal connection between felony and death",
-          "Mens rea transferred from the felony intent"
-        ],
-        notes: "BREAKRSS: Burglary, Robbery, Escape, Arson, Kidnapping, Rape, Sodomy, Serious Sex Crimes. Strict liability for the killing. Limitations: inherently dangerous, independent felonious purpose, merger doctrine, agency theory (~75%), proximate cause, time period, in furtherance.",
-        color: "#DC2626"
-      },
-      {
-        name: "Second Degree Murder",
-        elements: [
-          "Intentional killing WITHOUT premeditation and deliberation",
-          "OR recklessness + extreme indifference to human life ('depraved heart')",
-          "OR intent to inflict great bodily harm resulting in death"
-        ],
-        notes: "Malone (Russian Roulette): gross recklessness = malice. MPC: extreme recklessness manifesting extreme indifference to value of human life.",
-        color: "#EA580C"
-      },
-      {
-        name: "Voluntary Manslaughter (Heat of Passion)",
-        elements: [
-          "Intentional killing",
-          "Committed under influence of passion / heat of blood",
-          "Adequate or reasonable provocation",
-          "Before reasonable time to cool off",
-          "Resulting in temporary loss of self-control"
-        ],
-        notes: "Girouard (majority): only recognized categories (battery, mutual combat, adultery discovery). Maher (minority): anything that would provoke a reasonable person → jury decides. Words alone generally insufficient.",
-        color: "#F59E0B"
-      },
-      {
-        name: "Involuntary Manslaughter",
-        elements: [
-          "Unintentional killing",
-          "Caused by criminal negligence or recklessness",
-          "(or) during commission of an unlawful act (misdemeanor-manslaughter rule)"
-        ],
-        notes: "Welansky: 'wanton and reckless' = grave danger apparent + chose to run the risk. Williams: ordinary negligence sufficient in some jurisdictions (WA, since repealed). MPC splits into manslaughter (recklessness) and negligent homicide.",
-        color: "#EAB308"
-      },
-      {
-        name: "Negligent Homicide (MPC)",
-        elements: [
-          "Unintentional killing",
-          "Defendant should have been aware of substantial and unjustifiable risk",
-          "Gross deviation from standard of care of a reasonable person"
-        ],
-        notes: "Lesser than manslaughter under MPC. Person should have known but didn't (vs. recklessness where person consciously disregards).",
-        color: "#CA8A04"
-      },
-      {
-        name: "Misdemeanor-Manslaughter",
-        elements: [
-          "Commission of an unlawful act (misdemeanor)",
-          "That act caused someone's death",
-          "Proximate cause between act and death"
-        ],
-        notes: "Limitations: proximate cause required, some courts limit to malum in se offenses, some require dangerousness. Commonwealth v. Williams: expired license didn't cause crash.",
-        color: "#CA8A04"
-      }
-    ]
-  },
-  {
-    category: "INCHOATE CRIMES",
-    items: [
-      {
-        name: "Attempt",
-        elements: [
-          "Specific intent (purpose) to commit the target crime",
-          "A substantial step toward commission (MPC) OR act tending to effect commission (common law proximity test)",
-          "Failure to complete the crime"
-        ],
-        notes: "Rizzo: proximity test — must come very near to accomplishment. Jackson: substantial step + strongly corroborative of criminal intent. Mens rea is always intent/purpose, even if completed crime only requires recklessness. Abandonment defense (MPC): voluntary and complete renunciation.",
-        color: "#7C3AED"
-      },
-      {
-        name: "Solicitation",
-        elements: [
-          "Intentionally encouraging, requesting, or commanding another",
-          "To commit a crime",
-          "With purpose that the crime be committed"
-        ],
-        notes: "Davis: solicitation alone not attempt. Church: solicitation + detailed planning + payment = attempt. Independent crime under MPC §5.02. Crime is complete upon the asking — no need for the other person to agree or act.",
-        color: "#7C3AED"
-      },
-      {
-        name: "Conspiracy",
-        elements: [
-          "Agreement between two or more persons (bilateral) or by the defendant (unilateral/MPC)",
-          "To commit a crime",
-          "Intent that the target crime be committed",
-          "Overt act in furtherance of the agreement (most jurisdictions)"
-        ],
-        notes: "Does NOT merge into completed crime (unlike attempt). Pinkerton: co-conspirators liable for foreseeable crimes in furtherance. Wharton's Rule: can't charge conspiracy when crime inherently requires 2+ people. Kotteakos: hub-and-spoke needs a 'rim.' Bruno: chain conspiracy = one conspiracy if each link knows others exist + community of interest.",
-        color: "#7C3AED"
-      }
-    ]
-  },
-  {
-    category: "PROPERTY & OTHER SPECIFIC CRIMES",
-    items: [
-      {
-        name: "Larceny",
-        elements: [
-          "Intentional taking",
-          "And carrying away (asportation)",
-          "Of the property of another",
-          "With further intent to deprive the owner permanently (or unreasonably long time)"
-        ],
-        notes: "Specific intent crime (double intent). The 'further intent' to permanently deprive distinguishes it from trespass.",
-        color: "#2563EB"
-      },
-      {
-        name: "Robbery",
-        elements: [
-          "Larceny (taking + carrying away + property of another + intent to deprive)",
-          "By force, fear, intimidation, threat, or violence",
-          "Against a person (not just property)"
-        ],
-        notes: "Specific intent crime. Larceny + force = robbery. Crime against a person, not just property.",
-        color: "#2563EB"
-      },
-      {
-        name: "Burglary",
-        elements: [
-          "Intentional breaking and entering",
-          "Of the dwelling/structure of another",
-          "With intent to commit a crime once inside"
-        ],
-        notes: "Specific intent crime. Breaking + entering = general intent, but with intent to commit crime inside = specific intent. A 'crime in the nature of attempt.' Independent felonious purpose for felony murder analysis.",
-        color: "#2563EB"
-      },
-      {
-        name: "Arson",
-        elements: [
-          "Willful and malicious",
-          "Burning of a structure/dwelling"
-        ],
-        notes: "Inherently dangerous felony for felony murder (BREAKRSS). Serne: putting people at risk by setting fire = murder if death results.",
-        color: "#2563EB"
-      },
-      {
-        name: "Assault",
-        elements: [
-          "An act creating a reasonable apprehension",
-          "Of imminent harmful or offensive contact",
-          "(OR) an attempted battery"
-        ],
-        notes: "Hood: treated as general intent for intoxication purposes. Assault with intent to kill/rape = specific intent.",
-        color: "#2563EB"
-      },
-      {
-        name: "Battery",
-        elements: [
-          "Unlawful application of force",
-          "To the person of another",
-          "Resulting in harmful or offensive contact"
-        ],
-        notes: "General intent crime. Often the completed form of assault.",
-        color: "#2563EB"
-      },
-      {
-        name: "Rape",
-        elements: [
-          "Sexual intercourse",
-          "By force or threat of force",
-          "Without consent of the victim"
-        ],
-        notes: "Sherry: mistake of consent not a defense; man proceeds at own peril. Fischer: mistake of fact re consent not a defense to IDSI. General intent crime (all modern jurisdictions). Physical resistance not required — any resistance showing lack of consent suffices. Mens rea debate: purpose (0), knowledge (10), recklessly (12), negligently (14).",
-        color: "#2563EB"
-      },
-      {
-        name: "Receiving Stolen Property",
-        elements: [
-          "Receiving property",
-          "That has been stolen",
-          "With knowledge that it was stolen"
-        ],
-        notes: "Jaffe: if property no longer stolen at time of receipt → legal impossibility (traditional). Knowledge element = actual knowledge, not mere belief.",
-        color: "#2563EB"
-      },
-      {
-        name: "Kidnapping",
-        elements: [
-          "Unlawful confinement or movement",
-          "Of another person",
-          "By force, threat, or deception"
-        ],
-        notes: "BREAKRSS felony for felony murder. Inherently dangerous.",
-        color: "#2563EB"
-      }
-    ]
-  },
-  {
-    category: "COMPLICITY & VICARIOUS LIABILITY",
-    items: [
-      {
-        name: "Accomplice Liability (Aiding & Abetting)",
-        elements: [
-          "Intent that the crime be committed",
-          "Acts of aiding, abetting, assisting, or facilitating the crime",
-          "The principal commits (or attempts) the crime"
-        ],
-        notes: "Punished same as principal. Federal: aids, abets, counsels, commands, induces, or procures. Lauria: knowledge of criminal use ≠ intent to participate (for misdemeanors). For serious felonies, knowledge alone may suffice.",
-        color: "#059669"
-      },
-      {
-        name: "Accessory After the Fact",
-        elements: [
-          "Assist a person who has committed a crime",
-          "After the crime has been committed",
-          "With knowledge that the person committed the crime",
-          "With intent to help avoid arrest or punishment"
-        ],
-        notes: "Lesser punishment than principal. Separate and distinct from accomplice liability.",
-        color: "#059669"
-      },
-      {
-        name: "Pinkerton Liability (Conspiracy-Based)",
-        elements: [
-          "Membership in an ongoing conspiracy",
-          "Co-conspirator commits a substantive crime",
-          "Crime falls within scope of conspiracy OR is reasonably foreseeable",
-          "Crime committed in furtherance of the conspiracy"
-        ],
-        notes: "Vicarious liability WITHOUT personal participation. ~75% of jurisdictions. Rejected by MPC and NY (McGee). Alvarez: extended to unintended but foreseeable crimes during drug conspiracy.",
-        color: "#059669"
-      }
-    ]
-  },
-  {
-    category: "STRICT LIABILITY OFFENSES",
-    items: [
-      {
-        name: "Strict Liability / Public Welfare Offenses",
-        elements: [
-          "Voluntary act (actus reus)",
-          "That violates the statute",
-          "NO mens rea required"
-        ],
-        notes: "Balint: narcotics at own peril. Dotterweich: mislabeled drugs. Morissette: common-law crimes (stealing) still require mens rea even if statute is silent. MPC: strict liability only for 'violations' (not crimes), punished by fines only, no imprisonment. Determining SL: words of statute, legislative history, maximum penalty.",
-        color: "#6B7280"
-      },
-      {
-        name: "Statutory Rape (Prince Principle)",
-        elements: [
-          "Sexual intercourse with a minor",
-          "Under the statutory age",
-          "Regardless of defendant's knowledge of age"
-        ],
-        notes: "Prince: mistake of fact about age not a defense when committing a morally wrong act. Lesser crime principle: if facts as believed would still be a crime, no defense. MPC disfavors strict liability but this remains an exception.",
-        color: "#6B7280"
-      }
-    ]
-  },
-  {
-    category: "DEFENSES (Quick Reference)",
-    items: [
-      {
-        name: "Self-Defense (Justification)",
-        elements: [
-          "Resisting present or imminent unlawful force",
-          "No more force than reasonably necessary",
-          "Deadly force only against deadly danger",
-          "Not the initial aggressor (exceptions: non-deadly aggressor facing deadly force, or withdrew)",
-          "Duty to retreat (some jurisdictions; eliminated by Stand Your Ground)"
-        ],
-        notes: "Imperfect self-defense: honest but unreasonable belief → reduces to VM. BWS: admissible to explain perception but standard varies (objective, hybrid, subjective). Norman: sleeping abuser = no imminence. MPC: 'immediately necessary' (broader than 'imminent').",
-        color: "#0891B2"
-      },
-      {
-        name: "Necessity / Choice of Evils (Justification)",
-        elements: [
-          "Choice of evils — chose the lesser evil",
-          "Acted to prevent imminent harm",
-          "Direct causal relationship between conduct and harm averted",
-          "No legal alternatives to violating the law",
-          "Situation not caused by defendant's recklessness"
-        ],
-        notes: "Schoon: NEVER available for indirect civil disobedience. Cannot justify taking life of innocent person. Rarely successful. Conjunctive — failure on any element = no defense.",
-        color: "#0891B2"
-      },
-      {
-        name: "Duress (Excuse)",
-        elements: [
-          "Threat by another person (not circumstances)",
-          "Reasonable fear of imminent death or serious bodily harm (common law) OR coercion a person of reasonable firmness couldn't resist (MPC)",
-          "No reasonable opportunity to escape",
-          "Not available for murder (common law); MPC allows it"
-        ],
-        notes: "Toscano: NJ adopted MPC broader standard. Distinction from necessity: duress = human threat (excuse), necessity = circumstances (justification). MPC: person of reasonable firmness in actor's situation.",
-        color: "#0891B2"
-      },
-      {
-        name: "Voluntary Intoxication (Partial Defense)",
-        elements: [
-          "Defendant was voluntarily intoxicated",
-          "Intoxication negated the specific intent required for the crime"
-        ],
-        notes: "Roberts: admissible to negate specific intent (intent to kill). Hood: NOT admissible for general intent crimes (assault). MPC: admissible for purpose/knowledge, NOT for recklessness (getting drunk = conscious disregard). ~14 states bar entirely. Egelhoff: constitutional to exclude.",
-        color: "#0891B2"
-      },
-      {
-        name: "Insanity (Excuse)",
-        elements: [
-          "Mental disease or defect at time of the act",
-          "PLUS (varies by test):",
-          "M'Naghten: didn't know nature/quality of act OR didn't know it was wrong",
-          "Irresistible Impulse: lost power to control actions",
-          "Durham: act was product of mental disease (rarely used)",
-          "MPC/ALI: lacked substantial capacity to appreciate criminality OR conform conduct to law"
-        ],
-        notes: "Burden varies: some on prosecution, some on defense (post-Hinckley). Federal law: basically M'Naghten + burden on defendant. 5 states abolished entirely. NGRI → hospital, not acquittal. Rarely used (~0.25% of cases), rarely successful.",
-        color: "#0891B2"
-      },
-      {
-        name: "Mistake of Fact",
-        elements: [
-          "Defendant held an honest (and sometimes reasonable) mistaken belief about a fact",
-          "That negates the mens rea required for the crime"
-        ],
-        notes: "Specific intent: unreasonable mistake = defense. General intent: only reasonable mistake = defense. Strict liability: NO mistake defense. Morgan (overruled): unreasonable but honest belief once sufficed for rape (now general intent = need reasonable).",
-        color: "#0891B2"
-      },
-      {
-        name: "Mistake of Law",
-        elements: [
-          "Generally NOT a defense ('ignorance of the law is no excuse')",
-          "Exception: Lambert — crime of omission + reasonable person wouldn't know about the law",
-          "Exception: official reliance (due process — Raley v. Ohio)"
-        ],
-        notes: "Hopkins: reliance on state attorney advice not a defense. MPC: allows defense for minor regulatory offenses if relied on official statement, but only ONCE. Albertini: rely on latest ruling in your circuit.",
-        color: "#0891B2"
-      },
-      {
-        name: "Impossibility",
-        elements: [
-          "Pure Legal Impossibility: act is not a crime → ALWAYS a defense",
-          "Factual Impossibility: crime fails due to external facts → NOT a defense",
-          "Mixed Fact/Law: debated — defense in some jurisdictions, not in MPC"
-        ],
-        notes: "Jaffe: cloth not stolen = legal impossibility (defense). Dlugash: victim possibly dead = no defense under MPC §110.10. Oviedo: objective acts test (middle ground). Lady Eldon: true legal impossibility only when no crime exists on the books. MPC abolishes impossibility defense entirely.",
-        color: "#0891B2"
-      },
-      {
-        name: "Abandonment / Renunciation",
-        elements: [
-          "Voluntary and complete renunciation of criminal purpose",
-          "Not motivated by increased risk of detection or difficulty",
-          "Must be for the 'right reasons'"
-        ],
-        notes: "MPC §5.01(4). Johnston: abandoned because only $50 → not voluntary. McNeal: abducted girl then released → court said not voluntary. Ross: similar facts but court accepted defense.",
-        color: "#0891B2"
-      }
-    ]
-  },
-  {
-    category: "FOUNDATIONAL CONCEPTS",
-    items: [
-      {
-        name: "Actus Reus",
-        elements: [
-          "A voluntary physical act (or culpable omission where legal duty exists)"
-        ],
-        notes: "Martin: involuntary placement → no actus reus. Newton: unconsciousness negates voluntariness. Jones: omission requires legal duty (statute, relationship, contract, voluntary assumption of care).",
-        color: "#475569"
-      },
-      {
-        name: "Mens Rea (MPC Hierarchy)",
-        elements: [
-          "Purpose: conscious object to engage in conduct / cause result",
-          "Knowledge: practically certain conduct will cause result",
-          "Recklessness: consciously disregards substantial and unjustifiable risk",
-          "Negligence: should have been aware of substantial and unjustifiable risk"
-        ],
-        notes: "Cunningham: 'maliciously' = intended harm or reckless as to whether harm occurs. Purpose/Knowledge = specific intent. Recklessness/Negligence = general intent.",
-        color: "#475569"
-      },
-      {
-        name: "Legality Principle",
-        elements: [
-          "Nulla poena sine lege — no punishment without law",
-          "Fair warning / notice",
-          "No retroactivity (Ex Post Facto)",
-          "No vague or overbroad statutes (Due Process)"
-        ],
-        notes: "Papachristou: vagrancy ordinance unconstitutional (no clear standards). McBoyle: airplane not a 'vehicle.' Cohen v. California: breach of peace too vague. Lambert: due process requires notice for omission crimes.",
-        color: "#475569"
-      },
-      {
-        name: "Proportionality (8th Amendment)",
-        elements: [
-          "Punishment must be proportional to the offense",
-          "No cruel and unusual punishment"
-        ],
-        notes: "Coker: death for rape = disproportionate. Atkins: no death penalty for intellectually disabled. Roper: no death penalty for juveniles. Miller: no mandatory LWOP for juveniles. Rummel: three strikes upheld (controversial).",
-        color: "#475569"
-      }
-    ]
-  }
+const questions = [
+  // Class 3
+  { cls:"Class 3", num:1, text:`President Trump just signed into law the federal No Teacher Tenure Act, which provides that school districts no longer needed to recognize the tenure of elementary school teachers. The union filed an action in federal court on behalf of the teachers, asking for an injunction and a declaratory judgment stating that the law is invalid.\n\nShould the federal court hear the case?`,
+    opts:[
+      "Yes, because the federal law encourages improper interference with a contract.",
+      "No, because the union does not have standing to sue on behalf of the teachers.",
+      "No, because a ruling on the law at this point is premature.",
+      "Yes, because the teachers' rights and benefits are threatened by the law and the school board's stated plans."
+    ], ans:2 },
+
+  // Class 8
+  { cls:"Class 8", num:1, text:`Congress authorized $15 million for states with locust outbreaks. Under the law, all federal environmental protection funding would be contingent on state implementation of the spraying program. Nebraska refused and the federal government terminated all environmental protection funding.\n\nWho will most likely prevail?`,
+    opts:[
+      "The federal government, because depriving Nebraska of federal funding amounting to less than 2% of the state's budget is not unduly coercive.",
+      "The federal government, because controlling locust populations in multiple states is a valid regulation of interstate commerce.",
+      "Nebraska, because controlling locust populations is not a regulation of interstate commerce.",
+      "Nebraska, because Congress may not use its spending power to coerce states into implementing federal programs."
+    ], ans:0 },
+  { cls:"Class 8", num:2, text:`Congress enacted a $30 tax on each person flying into the seven most popular vacation destinations. Officials in those destinations want to challenge the legislation.\n\nIf an official with standing challenges the tax, is it likely that the tax is found constitutional?`,
+    opts:[
+      "Yes, because Congress has plenary power to impose taxes to raise revenue.",
+      "Yes, because the tax is necessary to achieve a compelling government interest.",
+      "No, because the tax unfairly discriminates against certain vacation destinations.",
+      "No, because it makes it significantly more difficult for persons to travel between the states."
+    ], ans:0 },
+  { cls:"Class 8", num:3, text:`Congress provided by statute that any state that does not enact a ban on texting while driving within 4 years shall be denied 20% of federal highway construction funding.\n\nWhat is the best argument in support of constitutionality?`,
+    opts:[
+      "The requirement is not unduly coercive and is related to making travel on highways safer.",
+      "A recent public opinion survey demonstrates that 90% of the people support the ban.",
+      "The states ceded their authority over highways when they accepted federal grants.",
+      "The federal government can regulate use of state highways without limitation because it paid for most of their construction."
+    ], ans:0 },
+  { cls:"Class 8", num:4, text:`Congress enacted SOBA imposing criminal penalties for killing bobcats, as Congress determined they are important to tourism. California classified bobcats as varmint. A farmer is prosecuted under SOBA.\n\nWhat is the strongest constitutional argument in support of SOBA?`,
+    opts:[
+      "The commerce power.",
+      "The police power.",
+      "The Necessary and Proper Clause.",
+      "The power to regulate federal lands."
+    ], ans:0 },
+
+  // Class 9
+  { cls:"Class 9", num:1, text:`The President lost her temper, falsely criticized an aide with whom she had an affair, fired him and told him he would never work in government again. The aide sued for intentional infliction of emotional distress.\n\nIf the President moved to dismiss, what would be the most important criterion?`,
+    opts:[
+      "Whether the President's actions were predicated on her official acts.",
+      "Whether the President's affair with a subordinate constituted a crime.",
+      "Whether the President would be hampered in conducting official duties in defending the lawsuit.",
+      "Whether the separation of powers doctrine is served by postponing the case."
+    ], ans:0 },
+  { cls:"Class 9", num:2, text:`Following terrorist attacks, the President issued an executive order cutting off diplomatic ties with a foreign country, including closing its embassy. The consul brought an action to enjoin enforcement.\n\nWill the court hear the case?`,
+    opts:[
+      "No, because Article II gives the President exclusive authority to recognize foreign governments.",
+      "No, because lower federal courts lack original jurisdiction over cases involving ambassadors and consuls.",
+      "Yes, because the consul has suffered redressable harm.",
+      "Yes, because the President's action usurps Congress's power to regulate foreign commerce."
+    ], ans:0 },
+  { cls:"Class 9", num:3, text:`In the Steel Seizure case, which of the following was NOT part of the majority or concurring opinions regarding President Truman's authority?`,
+    opts:[
+      "The Executive has unfettered authority.",
+      "The Executive's power is at its lowest ebb when acting against the will of Congress.",
+      "The Executive's power is at its height when acting with the support of Congress.",
+      "There is a 'zone of twilight' where the Court must determine whether Congress supported the Executive's action."
+    ], ans:0 },
+
+  // Class 10
+  { cls:"Class 10", num:1, text:`The President drew a line through one of two appropriations in a bill, canceling it, and then signed the bill. The affected professor brought suit.\n\nWas the President's action constitutional?`,
+    opts:[
+      "No, because the President has no line item veto power.",
+      "No, because the President may not veto an appropriation passed by Congress.",
+      "Yes, because the President could have vetoed the appropriation if it were in a separate bill.",
+      "Yes, because the President has the power to refuse to spend funds unless specifically mandated."
+    ], ans:0 },
+  { cls:"Class 10", num:2, text:`The Stop Terrorism Act authorized President A to designate state sponsors of terrorism. President B designated traditional allies. Congress passed a joint resolution reinstating trade agreements.\n\nIf President B seeks to enforce the sanctions, are they valid?`,
+    opts:[
+      "Yes, because the President did not sign the joint resolution.",
+      "No, because presidential economic power is at its lowest ebb when conflicting with Congress.",
+      "Yes, because Congress can regulate domestic but not foreign commerce.",
+      "No, because Congress has exclusive power to regulate commerce with foreign nations."
+    ], ans:0 },
+
+  // Class 11
+  { cls:"Class 11", num:2, text:`A candidate for mayor will have been a resident for only 4.5 years at the time he would take office (5-year requirement). He filed suit for a declaratory judgment naming only his party chairman as defendant.\n\nWhich best reflects the action the court should take?`,
+    opts:[
+      "Refuse to determine the merits because there is no case or controversy.",
+      "Refuse to issue the declaratory judgment because it does not present a substantial federal question.",
+      "Issue the declaratory judgment because the candidate will have substantially complied.",
+      "No answer text provided."
+    ], ans:0 },
+  { cls:"Class 11", num:6, text:`The Vice President conspired to sell military weapons to a foreign country. The House voted to impeach by one vote, and the Senate voted to remove by one vote.\n\nIf the VP refuses to leave, what is her best argument?`,
+    opts:[
+      "The Senate did not have enough votes to convict her.",
+      "Only the President may be impeached.",
+      "A two-thirds vote of both Houses is required to convict.",
+      "The Senate, not the House, is the appropriate body to impeach."
+    ], ans:0 },
+
+  // Class 12
+  { cls:"Class 12", num:1, text:`Texas passed a statute that will not authorize a birth certificate unless both parents can prove citizenship. A challenger would most correctly argue:`,
+    opts:[
+      "The 14th Amendment provides that all persons born in the US must be naturalized.",
+      "The 14th Amendment provides that all persons born in the US are citizens of the US.",
+      "The 14th Amendment grants state citizenship to noncitizens.",
+      "The 14th Amendment applies to 'any person' including noncitizens."
+    ], ans:1 },
+  { cls:"Class 12", num:2, text:`The Court in Scott v. Sandford held that Dred Scott was not a citizen. This holding was most specifically invalidated by the:`,
+    opts:[
+      "Fourteenth Amendment section 1",
+      "Fourteenth Amendment section 3",
+      "Fourteenth Amendment section 2",
+      "Thirteenth Amendment"
+    ], ans:0 },
+  { cls:"Class 12", num:3, text:`True or False: The framers of the Bill of Rights intended to protect individuals against actions by the federal government but not state or local governments.`,
+    opts:["True","False"], ans:0 },
+  { cls:"Class 12", num:4, text:`The Slaughter-House Cases rendered the Privileges or Immunities Clause essentially defunct. Which provision of the 14th Amendment is most important to incorporation of the Bill of Rights?`,
+    opts:[
+      "Equal Protection Clause",
+      "Due Process Clause",
+      "Privileges or Immunities Clause",
+      "Citizenship Clause"
+    ], ans:1 },
+
+  // Class 13
+  { cls:"Class 13", num:1, text:`Which best describes the significance of Footnote 4 in U.S. v. Carolene Products?`,
+    opts:[
+      "It outlined the path for more closely examining interference with fundamental rights and discrimination against minorities.",
+      "It repudiated the Court's rigorous review of economic regulation.",
+      "It created a roadmap for incorporating the Bill of Rights to the states.",
+      "It established the right to vote as a fundamental right."
+    ], ans:0 },
+
+  // Class 14
+  { cls:"Class 14", num:1, text:`Which statement most clearly articulates the Supreme Court's rationale regarding government funding for abortion?`,
+    opts:[
+      "The Due Process Clause confers no affirmative right to government aid, even where such aid may be necessary to secure liberty interests.",
+      "The Spending Clause confers no affirmative right except where necessary to secure liberty interests.",
+      "The Due Process Clause confers no affirmative right unless the right is fundamental.",
+      "The Spending Clause confers an affirmative right to government aid."
+    ], ans:0 },
+  { cls:"Class 14", num:2, text:`In Roe v. Wade, the Court noted that historically "legal abortion practices were far freer." Which best clarifies the doctrinal relevance?`,
+    opts:[
+      "For a right to be fundamental and subject to strict scrutiny, it should be deeply rooted in this nation's history and tradition.",
+      "For a right to be fundamental, it must not have been criminalized at common law.",
+      "For a right to be fundamental and subject to strict scrutiny, it must not have been criminalized at common law.",
+      "For a right to be fundamental and subject to strict scrutiny, it should be an implicit part of 19th Century legal practice."
+    ], ans:0 },
+
+  // Class 18
+  { cls:"Class 18", num:1, text:`A state statute provides that married persons who engage in certain "unnatural" sex acts are guilty of second degree sodomy. A married couple was prosecuted. The most effective argument that the statute is unconstitutional is that it violated their right to:`,
+    opts:[
+      "Procedural due process",
+      "Equal protection",
+      "Freedom of expression",
+      "Substantive due process"
+    ], ans:3 },
+  { cls:"Class 18", num:2, text:`In a case about the constitutionality of a state law regulating the sale of birth control devices, which party will have the burden of persuasion?`,
+    opts:[
+      "The challenger, since regulation of non-expressive sexual conduct is reserved to the states.",
+      "The state, because the right to contraception involves a fundamental right.",
+      "The challenger, since there is a rebuttable presumption that all state laws are constitutional.",
+      "The state, because the law is more likely to substantially impact women than men."
+    ], ans:1 },
+
+  // Class 19
+  { cls:"Class 19", num:1, text:`Choose the best statement of the Court's holding in Plessy v. Ferguson:`,
+    opts:[
+      "A statute mandating equal but separated by race accommodations in railroad transportation is reasonable and does not violate the Equal Protection Clause or 14th/13th Amendments.",
+      "Such a statute is a permissible expression of the customs of people.",
+      "Such a statute is compelling and does not violate the Equal Protection Clause.",
+      "Such a statute is the essence of formal equality mandated by the Equal Protection Clause."
+    ], ans:0 },
+  { cls:"Class 19", num:2, text:`Which argument would advocates for racial equality after Plessy be LEAST likely to advance?`,
+    opts:[
+      "Plessy required substantive equality and that was not satisfied.",
+      "Plessy was limited to 'railroad transportation' and did not apply to other aspects of equality.",
+      "Plessy required accommodations to be 'equal' and that was not satisfied.",
+      "Plessy required the standard to be merely 'reasonable,' but the standard should be higher."
+    ], ans:0 },
+  { cls:"Class 19", num:3, text:`The Court in Plessy cited a case about the right to sit on juries as a protection of political equality. In support, the Court cited:`,
+    opts:[
+      "Strauder v. West Virginia",
+      "The Slaughter-House Cases",
+      "The Civil Rights Cases",
+      "Yick Wo v. Hopkins"
+    ], ans:0 },
+
+  // Class 20
+  { cls:"Class 20", num:1, text:`If you represent San Francisco against an Equal Protection challenge alleging discrimination against Asian-Americans, would you rather a court decide the city's action makes a classification based on ethnicity or not?`,
+    opts:["Not based on ethnicity","Based on ethnicity"], ans:0 },
+  { cls:"Class 20", num:2, text:`If you are challenging a state action on Equal Protection grounds, would you rather a court decide the state action makes a racial classification or does not?`,
+    opts:["Makes a Racial Classification","Does not make a Racial Classification"], ans:0 },
+  { cls:"Class 20", num:3, text:`Assume Hawai'i's Constitution provides that only "Native Hawaiian ancestry" persons can vote for certain agency officers. The best argument for challengers would be:`,
+    opts:[
+      "Distinctions based solely on ancestry are by their nature odious and thus strict scrutiny applies.",
+      "Since Hawai'i was not a state when the 14th Amendment was adopted, the Equal Protection Clause does not apply.",
+      "There is no proof that the framers intended to discriminate.",
+      "Ancestry distinctions are odious unless the state demonstrates they are supported by a narrowly tailored governmental interest."
+    ], ans:0 },
+
+  // Class 22
+  { cls:"Class 22", num:1, text:`The Young Trailblazers, a private youth organization open only to white children, rejected a twelve-year-old Black child's application solely based on race.\n\nIs the Young Trailblazers guilty of violating the state statute?`,
+    opts:[
+      "No, because the Young Trailblazers is a private organization.",
+      "Yes, because it denied Penny's right to substantive due process.",
+      "Yes, because it denied Penny's right to privileges and immunities of citizenship.",
+      "Yes, because it denied Penny's right to equal protection."
+    ], ans:0 },
+
+  // Class 23
+  { cls:"Class 23", num:1, text:`A state law raised the minimum driving age to 21 for males only (females could still get licenses at 16), based on accident statistics. An 18-year-old male lost his job.\n\nIf the young man sues and prevails, what is the most likely reason?`,
+    opts:[
+      "The state could not prove the law was substantially related to an important government interest.",
+      "The state could not prove the law was the least restrictive means of achieving a compelling purpose.",
+      "The state could not prove the law was rationally related to a legitimate government purpose.",
+      "The state could not prove the law was necessary to achieve a compelling government purpose."
+    ], ans:0 },
+
+  // Class 24
+  { cls:"Class 24", num:1, text:`D.C. passed an ordinance prohibiting young men aged 14–20 from being out after 10 PM unless accompanied by a female, to "reduce violence among male gang members." Sean, 17, was fined.\n\nShould the court find the ordinance constitutional?`,
+    opts:[
+      "No, unless D.C. can show the ordinance is substantially related to important government objectives.",
+      "Yes, if D.C. can show a rational relationship to maintaining order.",
+      "Yes, because the government is performing a parens patriae function.",
+      "No, if Sean can show it was not necessary to promote a compelling interest."
+    ], ans:0 },
+  { cls:"Class 24", num:2, text:`D.C. requires fewer push-ups for women than men in the firefighter physical exam. D.C. counsel argued plaintiffs must demonstrate a more serious denial of equal protection because D.C. is federal.\n\nWhat is plaintiffs' strongest argument in response?`,
+    opts:[
+      "The equal protection analysis is only slightly higher for federal acts.",
+      "The analysis is at the Court's discretion for federal acts.",
+      "The analysis is lower for federal acts.",
+      "The equal protection analysis is the same whether federal or state government acts are being challenged."
+    ], ans:3 },
+
+  // Class 25
+  { cls:"Class 25", num:1, text:`New York's retirement system gives smaller monthly benefits to those who abstain from alcohol (longer life expectancy). Tina Teetotaler challenges the benefit standard.\n\nWhat would be the appropriate burden of proof?`,
+    opts:[
+      "Tina must show the standard is not rationally related to a legitimate state purpose.",
+      "Tina must show it is not necessary to achieve a compelling state interest.",
+      "New York must show it is necessary to achieve a compelling interest.",
+      "New York must show it is rationally related to a legitimate state interest."
+    ], ans:3 },
+  { cls:"Class 25", num:2, text:`Arizona requires catering license applicants to be US citizens. Jessica, a lawful non-citizen resident, challenges this requirement. This provision is most likely:`,
+    opts:[
+      "Unconstitutional, as a denial of equal protection.",
+      "Constitutional, as an effort to protect health and welfare.",
+      "Constitutional, as an exercise of police power.",
+      "Unconstitutional, as a violation of freedom to contract."
+    ], ans:0 },
+  { cls:"Class 25", num:3, text:`Sylvia, a non-citizen lawful resident, was denied a public school teaching position solely because she was not a US citizen.\n\nIs Sylvia likely to be successful in her 14th Amendment action?`,
+    opts:[
+      "No, because serving as a public educator is integral to the self-government process.",
+      "Yes, because her application complied with all requirements.",
+      "Yes, because the state has not shown the classification is necessary for a compelling interest.",
+      "No, because the state may discriminate where the justification is rationally related to a legitimate interest."
+    ], ans:0 },
+  { cls:"Class 25", num:4, text:`Stars Hollow charges $700 application fee and $100/month for its country club/pool, while parks are free. Lorelai cannot afford the fees.\n\nIf she sues claiming the fees discriminate against the poor under the Equal Protection Clause, will she prevail?`,
+    opts:[
+      "No, because such discrimination against the poor has not been held to violate the Equal Protection Clause.",
+      "Yes, because a public right cannot be denied based on inability to pay.",
+      "Yes, because the poor qualify as a protected class.",
+      "No, because the membership privilege is not an important enough deprivation."
+    ], ans:0 },
+
+  // Final Review
+  { cls:"Final Review", num:1, text:`Congress passed a law eliminating Supreme Court jurisdiction over all cases in which a state supreme court has found a defendant's federal constitutional rights were violated.\n\nIf held unconstitutional, what is the most likely reason?`,
+    opts:[
+      "The determination of constitutional rights is precisely the domain of the Supreme Court.",
+      "Congress's power to limit jurisdiction applies only to cases originating in federal courts.",
+      "This would require a constitutional amendment.",
+      "Congress may not eliminate all avenues for Supreme Court review of issues vested within the judicial power."
+    ], ans:3 },
+  { cls:"Final Review", num:2, text:`A federal law prohibited certain pesticides near navigable waters. A city passed an ordinance adopting a banned pesticide to combat mosquitoes.\n\nIs the court likely to find the ordinance valid?`,
+    opts:[
+      "Yes, because cities have a compelling interest in protecting health and welfare.",
+      "Yes, because controlling health hazards is an integral governmental function.",
+      "No, because it is superseded by the power of Congress to protect health and welfare.",
+      "No, because it conflicts with a federal law that Congress had the power to make under the Commerce Clause."
+    ], ans:3 },
+  { cls:"Final Review", num:3, text:`Congress wishes to prohibit discrimination in the sale or rental of housing based on sexual orientation, applying to all public and private vendors.\n\nWhat provides the strongest basis?`,
+    opts:[
+      "The General Welfare Clause.",
+      "The Commerce Clause, because the sale or rental of housing in aggregate could have a substantial effect on interstate commerce.",
+      "The Thirteenth Amendment enabling clause.",
+      "The Fourteenth Amendment enabling clause."
+    ], ans:1 },
+  { cls:"Final Review", num:4, text:`A special prosecutor subpoenaed memoranda from a presidential aide. The President moved to quash on executive privilege grounds.\n\nHow should the trial judge rule?`,
+    opts:[
+      "Deny, because the President has no greater privilege than any other officer.",
+      "Deny, because although there is a presumption of privilege, it can be overcome by a strong showing of the needs of the criminal justice system.",
+      "Grant, because executive privilege is an absolute bar except in impeachment.",
+      "Grant, because the President is entitled to confidential advice from subordinates."
+    ], ans:1 },
+  { cls:"Final Review", num:5, text:`A state made it a crime to be the biological parent of more than two children. A couple was convicted after having a third child.\n\nWhat is the strongest argument for voiding the convictions?`,
+    opts:[
+      "No rational basis for concluding the statute would further the government's stated interests.",
+      "The statute burdens the fundamental privacy interests of married persons.",
+      "The statute places too much discretion in state officials.",
+      "The statute denies married persons equal protection."
+    ], ans:1 },
+  { cls:"Final Review", num:6, text:`A state denied in-state tuition to resident aliens who were citizens of countries that held US citizens as hostages. The plaintiff had qualified for in-state tuition before the statute.\n\nWhat is his best argument?`,
+    opts:[
+      "Higher education is a fundamental right under the Privileges or Immunities Clause.",
+      "The statute violates the prohibition of ex post facto laws.",
+      "Alienage is a suspect category under Equal Protection, and the state has not met the appropriate standard.",
+      "Attending a state university is a property right that may not be taken without due process."
+    ], ans:2 },
+  { cls:"Final Review", num:7, text:`A state terminated supplemental school funding derived from lottery revenues. The districts that lost funding served a predominantly Hispanic population.\n\nWhat standard should the court use?`,
+    opts:[
+      "The state must demonstrate the statute is necessary to vindicate a compelling interest (suspect class).",
+      "Parents must demonstrate the statute is not substantially related to an important interest (no fundamental right).",
+      "Parents must demonstrate the statute is not rationally related to any legitimate state interest (no suspect class or fundamental right).",
+      "The state must demonstrate the statute is rationally related to a legitimate interest (not discriminatory in intent)."
+    ], ans:2 },
 ];
 
-const totalCount = crimes.reduce((s, c) => s + c.items.length, 0);
-document.getElementById('totalCount').textContent = totalCount;
+let correct=0, wrong=0;
+const total=questions.length;
 
-let openCat = null;
-let openCrime = null;
-
-function render(searchTerm) {
-  const container = document.getElementById('content');
-  const q = (searchTerm || '').trim().toLowerCase();
-
-  const filtered = q
-    ? crimes.map(cat => ({
-        ...cat,
-        items: cat.items.filter(item =>
-          item.name.toLowerCase().includes(q) ||
-          item.elements.some(e => e.toLowerCase().includes(q)) ||
-          item.notes.toLowerCase().includes(q)
-        )
-      })).filter(cat => cat.items.length > 0)
-    : crimes;
-
-  if (filtered.length === 0) {
-    container.innerHTML = `<div class="no-results">No crimes found matching "${searchTerm}"</div>`;
-    return;
-  }
-
-  let html = '';
-
-  filtered.forEach((cat, catIdx) => {
-    const catOpen = q || openCat === cat.category;
-
-    html += `<div class="category">`;
-    html += `<button class="cat-btn ${catOpen ? 'open' : ''}" onclick="toggleCat('${cat.category}')">
-      <span>${cat.category} <span class="count">(${cat.items.length})</span></span>
-      <span class="toggle">${catOpen ? '−' : '+'}</span>
-    </button>`;
-
-    html += `<div class="cat-body ${catOpen ? 'open' : ''}">`;
-
-    cat.items.forEach((crime, crimeIdx) => {
-      const key = `${catIdx}-${crimeIdx}`;
-      const crimeOpen = q || openCrime === key;
-
-      html += `<div class="crime">`;
-      html += `<button class="crime-btn ${crimeOpen ? 'open' : ''}" onclick="toggleCrime('${key}', event)">
-        <span class="crime-dot" style="background:${crime.color}"></span>
-        <span style="flex:1">${crime.name}</span>
-        <span class="crime-arrow">▸</span>
-      </button>`;
-
-      html += `<div class="crime-detail ${crimeOpen ? 'open' : ''}" id="detail-${key}">
-        <div class="detail-label" style="color:${crime.color}">Elements</div>
-        <ol>`;
-      crime.elements.forEach(el => {
-        html += `<li>${el}</li>`;
-      });
-      html += `</ol>
-        <div class="crime-notes" style="border-left:3px solid ${crime.color}33">
-          ${crime.notes}
-        </div>
-      </div>`;
-
-      html += `</div>`;
-    });
-
-    html += `</div></div>`;
+function render(){
+  const c=document.getElementById('quizContainer');
+  let html='';let curClass='';
+  questions.forEach((q,i)=>{
+    if(q.cls!==curClass){curClass=q.cls;html+=`<div class="class-divider">${curClass}</div>`;}
+    const letters='ABCD';
+    html+=`<div class="q-card" id="qcard${i}">
+      <div class="q-num">Question ${i+1} of ${total}</div>
+      <div class="q-text">${q.text.replace(/\n/g,'<br>')}</div>
+      <div class="options">${q.opts.map((o,j)=>`<button class="opt-btn" data-q="${i}" data-o="${j}" onclick="pick(${i},${j})"><span class="letter">${letters[j]}</span><span>${o}</span></button>`).join('')}</div>
+      <div class="feedback" id="fb${i}"></div>
+    </div>`;
   });
-
-  container.innerHTML = html;
+  c.innerHTML=html;
+  updateScore();
 }
 
-function toggleCat(name) {
-  openCat = openCat === name ? null : name;
-  openCrime = null;
-  render(document.getElementById('searchInput').value);
+function pick(qi,oi){
+  const q=questions[qi];
+  const card=document.getElementById('qcard'+qi);
+  if(card.classList.contains('answered-correct')||card.classList.contains('answered-wrong'))return;
+  const btns=card.querySelectorAll('.opt-btn');
+  const fb=document.getElementById('fb'+qi);
+  btns.forEach(b=>b.classList.add('locked'));
+  if(oi===q.ans){
+    btns[oi].classList.add('selected-correct');
+    card.classList.add('answered-correct');
+    fb.className='feedback show correct-fb';
+    fb.textContent='✓ Correct!';
+    correct++;
+  } else {
+    btns[oi].classList.add('selected-wrong');
+    btns[q.ans].classList.add('reveal-correct');
+    card.classList.add('answered-wrong');
+    fb.className='feedback show wrong-fb';
+    fb.textContent='✗ Incorrect — the correct answer is highlighted above.';
+    wrong++;
+  }
+  updateScore();
 }
 
-function toggleCrime(key, e) {
-  e.stopPropagation();
-  openCrime = openCrime === key ? null : key;
-  render(document.getElementById('searchInput').value);
+function updateScore(){
+  document.getElementById('sCorrect').textContent=correct;
+  document.getElementById('sWrong').textContent=wrong;
+  document.getElementById('sRemain').textContent=total-correct-wrong;
 }
 
-document.getElementById('searchInput').addEventListener('input', function() {
-  openCat = null;
-  openCrime = null;
-  render(this.value);
-});
+function resetQuiz(){
+  correct=0;wrong=0;render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
-render('');
+render();
 </script>
 </body>
 </html>
